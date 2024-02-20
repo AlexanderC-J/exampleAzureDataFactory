@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_MCCFED_MASTER_AGREEMENT_5PM",
+	"properties": {
+		"description": "Trigger to run delta load of Master Agreement table at 5 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_MASTER_AGREEMENT",
+					"sinkTableName": "MASTER_AGREEMENT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"SMA_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-01T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

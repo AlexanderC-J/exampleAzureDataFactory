@@ -1,0 +1,19 @@
+{
+	"name": "CCM_ECONFIRM_ERROR_LOG",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MCC FED",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "CCMDBP",
+			"table": "CCM_ECONFIRM_ERROR_LOG"
+		}
+	}
+}

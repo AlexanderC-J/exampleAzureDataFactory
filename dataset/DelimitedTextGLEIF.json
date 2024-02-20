@@ -1,0 +1,24 @@
+{
+	"name": "DelimitedTextGLEIF",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GLEIF_latest_files_CDF_csv",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GLEIF"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"name": "GLEIF_WEEKLY_FULL_TRIGGER",
+	"properties": {
+		"description": "Weekly full copy required to ensure all data is up to date.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "GLEIF",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2023-02-15T15:57:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						20
+					],
+					"weekDays": [
+						"Saturday"
+					]
+				}
+			}
+		}
+	}
+}

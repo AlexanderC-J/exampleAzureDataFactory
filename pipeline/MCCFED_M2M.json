@@ -1,0 +1,60 @@
+{
+	"name": "MCCFED_M2M",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select\n*\nfrom stp_m2m\nwhere created_tstmp > '01-SEP-22'",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.M2M",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_M2M",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_M2M",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

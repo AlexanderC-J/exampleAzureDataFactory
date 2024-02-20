@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_MCCFED_CCM_ECONFIRM_DATA_SUBMIT_5PM",
+	"properties": {
+		"description": "Daily delta load of ECONFIRM_DATA_SUBMIT table at 5 pm UKT.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "CCM_ECONFIRM_DATA_SUBMIT",
+					"sinkTableName": "CCM_ECONFIRM_DATA_SUBMIT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"CEB_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-10-03T15:48:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

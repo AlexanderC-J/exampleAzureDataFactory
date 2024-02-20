@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_MCCFED_UNIT_5PM",
+	"properties": {
+		"description": "Trigger to run delta load on unit table at 5 pm everyday.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_UNIT",
+					"sinkTableName": "UNIT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"UNT_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-08-22T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

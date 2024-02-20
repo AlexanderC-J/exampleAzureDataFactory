@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_ALIGNE_CONTRACTAUX",
+	"properties": {
+		"description": "Daily full copy of ALIGNE_CONTRACTAUX table.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ALIGNE_CONTRACTAUX",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-10-26T11:57:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}

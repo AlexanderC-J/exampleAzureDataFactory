@@ -1,0 +1,60 @@
+{
+	"name": "ALIGNE_TPOW",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select\r\n\r\nAUDIT_ACTIVE,\r\nAUDIT_AGEN,\r\nAUDIT_AOP0,\r\nAUDIT_ADATE0, -- works\r\nAUDIT_ATIME0,\r\nAUDIT_AOP1,\r\nAUDIT_ADATE1, -- works\r\nAUDIT_ATIME1,\r\nAUDIT_ALF, -- works\r\nAUDIT_AOHM, -- works\r\nAUDIT_ROHM, -- works\r\nAUDIT_REFRESH,\r\nAUDIT_ZKEY,\r\nAUDIT_XKEY,\r\nAUDIT_UTIL1,\r\nAUDIT_UTIL2,\r\nTRADE_TNUM,\r\nTRADE_STATUS,\r\nTRADE_VOID,\r\nTRADE_TRDTYP,\r\nTRADE_PARENT,\r\nTRADE_PRTGEN,\r\nTRADE_PRTTYP,\r\nTRADE_CHILD1,\r\nTRADE_CHILD2,\r\nTRADE_TDATE, -- works\r\nTRADE_GROUP,\r\nTRADE_SGROUP,\r\nTRADE_GROUP3,\r\nTRADE_GROUP4,\r\nTRADE_CPTY,\r\nTRADE_MANUM,\r\nTRADE_CCOMM,\r\nTRADE_CCSCHED,\r\nTRADE_CCFORM,\r\nTRADE_CCAMT,\r\nTRADE_CCUNIT,\r\nTRADE_CCCY,\r\nTRADE_BRO,\r\nTRADE_BCOMM,\r\nTRADE_BCSCHED,\r\nTRADE_BCFORM,\r\nTRADE_BCAMT,\r\nTRADE_BCUNIT,\r\nTRADE_BCCY,\r\nTRADE_SALES,\r\nTRADE_SCOMM,\r\nTRADE_SCSCHED,\r\nTRADE_SCFORM,\r\nTRADE_SCAMT,\r\nTRADE_SCUNIT,\r\nTRADE_SCCY,\r\nTRADE_BOOK,\r\nTRADE_TRADER,\r\nTRADE_TRDREX,\r\nTRADE_FCONF,\r\nTRADE_BCONF,\r\nTRADE_XREF,\r\nTRADE_XREFN,\r\nTRADE_PLCCY,\r\nTRADE_AMT,\r\nTRADE_SCN,\r\nTRADE_MEMO,\r\nTRADE_MEMO2,\r\nTRADE_TORG,\r\nTRADE_TORGTP,\r\nTRADE_INTERTNUM,\r\nTRADE_WHATIF,\r\nTRADE_PROD,\r\nTRADE_TEMPLATE,\r\nTPOW_TPL,\r\nTPOW_CONTACT,\r\nTPOW_CONTACT2,\r\nTPOW_MKT,\r\nTPOW_LOC,\r\nTPOW_SCOMP1,\r\nTPOW_TRADETYPE,\r\nTPOW_STARTDATE, -- fails\r\nTPOW_ENDDATE, -- fails\r\nTPOW_BCOUNT,\r\nTPOW_TRANFLAG,\r\nTPOW_DATEF, -- fails\r\nTPOW_DATES, -- fails\r\nTPOW_DATEE, -- fails\r\nTPOW_DAYS,\r\nTPOW_TIMES,\r\nTPOW_TIMEE,\r\nTPOW_AMOUNT,\r\nTPOW_RAMPAMT,\r\nTPOW_PRICE,\r\nTPOW_RAMP,\r\nTPOW_WAAMOUNT,\r\nTPOW_WAPRICE,\r\nTPOW_PRICEFIXED,\r\nTPOW_PRICEBASIS,\r\nTPOW_PRICE2BASIS,\r\nTPOW_PRICEPREM,\r\nTPOW_IDXFLAG,\r\nTPOW_IDXMKT,\r\nTPOW_SCOMP2,\r\nTPOW_IDXLOC,\r\nTPOW_RATE,\r\nTPOW_FLOOR,\r\nTPOW_CAP,\r\nTPOW_CCY,\r\nTPOW_UNIT,\r\nTPOW_UNIT2,\r\nTPOW_UNITPREM,\r\nTPOW_PERIOD,\r\nTPOW_PERIODPRC,\r\nTPOW_PERIODPREM,\r\nTPOW_FIXSCHE,\r\nTPOW_FIXSTART,\r\nTPOW_FIXDAYS,\r\nTPOW_FIXPSET,\r\nTPOW_FIX2SCHE,\r\nTPOW_FIX2START,\r\nTPOW_FIX2DAYS,\r\nTPOW_FIX2PSET,\r\nTPOW_FIXMONTH1,\r\nTPOW_FIXMONTH2,\r\nTPOW_PEAKCOUNT,\r\nTPOW_PEAKPERIOD,\r\nTPOW_FIRM,\r\nTPOW_FLEXLOC,\r\nTPOW_LOSSFLAG,\r\nTPOW_LOSSMKT,\r\nTPOW_LOSSLOC,\r\nTPOW_LOSSPRICE,\r\nTPOW_LOSSRATE,\r\nTPOW_LOSSSUP,\r\nTPOW_LOSSIDX,\r\nTPOW_OPT1FLAG,\r\nTPOW_OPT1TYPE,\r\nTPOW_OPT1MODEL,\r\nTPOW_OPT1TRIG,\r\nTPOW_OPT1TRIGTYPE,\r\nTPOW_OPT1TPRICE,\r\nTPOW_OPT1EXTYPE,\r\nTPOW_FLEXFLAG,\r\nTPOW_OPT1MIN,\r\nTPOW_OPT1MAX,\r\nTPOW_OPT1EXNUM,\r\nTPOW_OPT1DIGTP,\r\nTPOW_OPT1NOTTYPE,\r\nTPOW_OPT1NOTVAL,\r\nTPOW_OPT1NOTTIME,\r\nTPOW_OPT1EXPDATE, -- fails\r\nTPOW_OPTVOL,\r\nTPOW_PREM1FLAG,\r\nTPOW_PREM1TYPE,\r\nTPOW_PREM1VAL,\r\nTPOW_PREM1CCY,\r\nTPOW_PREM1PAY,\r\nTPOW_PREM1DATE, -- works\r\nTPOW_INV1,\r\nTPOW_INVLAG,\r\nTPOW_INVLAGNUM,\r\nTPOW_INVROUND,\r\nTPOW_INVPREC,\r\nTPOW_BS,\r\nTPOW_TRANSCO,\r\nTPOW_TRANSCA,\r\nTPOW_TRANSDUR,\r\nTPOW_LOSSPEAKS,\r\nTPOW_LOSSPEAKE,\r\nTPOW_TRANSLOSS,\r\nTPOW_TRANSLOSS2,\r\nTPOW_TRANSNET,\r\nTPOW_TRANSOASIS1,\r\nTPOW_TRANSOASIS2,\r\nTPOW_TRANSOASIS3,\r\nTPOW_TZ,\r\nTPOW_SETTLECALTYPE,\r\nTPOW_CONTRACTTYPE,\r\nTPOW_ADHOCPERIOD,\r\nTPOW_ADHOCDAYS,\r\nTPOW_BILLON,\r\nTPOW_PAYON,\r\nTPOW_ACCTMO,\r\nTPOW_THRESH,\r\nTPOW_HEDGE,\r\nTPOW_VAT,\r\nTPOW_HDAYLOC,\r\nTPOW_SCHED,\r\nTPOW_HDAYMKT,\r\nTPOW_FUNIT,\r\nTPOW_FUNITNUM,\r\nTPOW_OSNUM,\r\nTPOW_OSDATE, -- works\r\nTPOW_UTIL1,\r\nTPOW_UTIL2,\r\nTPOW_UTIL3,\r\nTPOW_UTIL4,\r\nTPOW_UTIL5,\r\nTPOW_TNUMGROUP,\r\nTPOW_SOURCE,\r\nTPOW_ECVNA,\r\nTPOW_NOTIFIED,\r\nTPOW_ECVNAAID,\r\nTPOW_ECVNAAKEY,\r\nTPOW_EFPBROH,\r\nTPOW_EFPBROC,\r\nTPOW_EFPPRICE,\r\nTPOW_EFPMONTH, -- works\r\nTPOW_EFPTRIG,\r\nTPOW_PKGFLAG,\r\nTPOW_PACKAGEID,\r\nTPOW_PROVISIONID,\r\nTPOW_GENPUR1,\r\nTPOW_GENPUR2,\r\nTPOW_GENPUR3,\r\nTPOW_SUBTYPE,\r\nTPOW_ISFUTURE,\r\nTPOW_TAMOUNT,\r\nTPOW_TPRICE,\r\nTPOW_ALLOWLIQGRP\r\n\r\nfrom ZAINET.TPOW",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE ALIGNE.TPOW",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ALIGNE_ZAINET_TPOW",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_TPOW",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "ALIGNE/Live"
+		},
+		"annotations": []
+	}
+}

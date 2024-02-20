@@ -1,0 +1,702 @@
+{
+	"name": "MCCFED_KPI_CREPORT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.KPI_CREPORT",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "MAIN_CASE_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MAIN_CASE_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "CC_REVIEW_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CC_REVIEW_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "CC_REVIEW_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CC_REVIEW_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_REVIEW_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CC_REVIEW_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_REVIEW_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CC_REVIEW_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "REQUEST_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REQUEST_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADEID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRADEID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTERPARTY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTERPARTY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "QUEUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "QUEUE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "NEW_OR_AMEND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NEW_OR_AMEND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADEDATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TRADEDATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "WORKFLOW",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WORKFLOW",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "BUY_OR_SELL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUY_OR_SELL",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNALENTITY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERNALENTITY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMODITY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMMODITY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "WORKFLOW_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "WORKFLOW_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKER_CONFIRM_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BROKER_CONFIRM_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "EMATCH_BROKER_STATUS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMATCH_BROKER_STATUS",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "EMATCH_CP_STATUS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMATCH_CP_STATUS",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKER_CONF_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "BROKER_CONF_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKER_CONF_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "BROKER_CONF_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKER_CONFIRM_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BROKER_CONFIRM_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "GENERATE_CONTRACT_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GENERATE_CONTRACT_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "GEN_CONTRACT_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GEN_CONTRACT_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "GEN_CONTRACT_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GEN_CONTRACT_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "GENERATE_CONTRACT_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GENERATE_CONTRACT_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "GENSEND_RESPONSE_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GENSEND_RESPONSE_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "RESPONSE_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "RESPONSE_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "RESPONSE_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "RESPONSE_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "RESPONSE_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RESPONSE_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRDDATE_TO_CPCONTRCVD_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TRDDATE_TO_CPCONTRCVD_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "TRADE_TO_CCR_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TRADE_TO_CCR_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADE_TO_CCR_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TRADE_TO_CCR_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CPCONTRCVD_TO_WTCPCONTREL_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CPCONTRCVD_TO_WTCPCONTREL_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "CCR_TO_WCCR_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CCR_TO_WCCR_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CCR_TO_WCCR_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CCR_TO_WCCR_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "WTCPCONTREL_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WTCPCONTREL_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CA_REVIEW_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CA_REVIEW_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "CA_REVIEW_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CA_REVIEW_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CA_REVIEW_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CA_REVIEW_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CA_REVIEWED_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CA_REVIEWED_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_SENT_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CC_SENT_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "CC_SENT_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CC_SENT_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_SENT_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CC_SENT_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CC_SENT_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CC_SENT_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "WKFLOW_TO_DSP_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "WKFLOW_TO_DSP_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "WKFLOW_TO_DSP_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "WKFLOW_TO_DSP_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "E2E_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "E2E_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "TR_REVIEW_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TR_REVIEW_DAYS",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 20
+								}
+							},
+							{
+								"source": {
+									"name": "TR_REVIEWED_USER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TR_REVIEWED_USER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_REVIEW_START_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TR_REVIEW_START_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "TR_REVIEW_END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TR_REVIEW_END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_KPI_CREPORT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_KPI_CREPORT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

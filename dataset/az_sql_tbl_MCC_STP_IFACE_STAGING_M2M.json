@@ -1,0 +1,72 @@
+{
+	"name": "az_sql_tbl_MCC_STP_IFACE_STAGING_M2M",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SIQ_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "SRCE_SYSTEM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SRCE_SYSTEM_KEY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ACTION_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERROR_PROCESSING_COUNT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_BY_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TRANSACTION_TYPE",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "IFACE_STAGING_M2M"
+		}
+	}
+}

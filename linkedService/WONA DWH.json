@@ -1,0 +1,24 @@
+{
+	"name": "WONA DWH",
+	"properties": {
+		"description": "PROD connection to WONA DWH",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=AMSDC1-A-TESH98BP.EUROPE.SHELL.COM;port=1648;serviceName=TESH98BP_PRIM;user id=WSTO43",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultGCPipeline",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sc-WONA-DWH-PROD"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

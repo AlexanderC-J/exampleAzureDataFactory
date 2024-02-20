@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_NEWTRADE",
+	"properties": {
+		"description": "Trigger to delta load the DEX_NEWTRADE table daily at 5 :05 pm.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_NEWTRADE_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-13T19:52:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						5
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

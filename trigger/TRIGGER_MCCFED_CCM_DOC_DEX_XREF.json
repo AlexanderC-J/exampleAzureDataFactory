@@ -1,0 +1,35 @@
+{
+	"name": "TRIGGER_MCCFED_CCM_DOC_DEX_XREF",
+	"properties": {
+		"description": "Daily trigger to delta load CCM_DOC_DEX_XREF table at 10 am, 1 pm and 5 pm.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CCM_DOC_DEX_XREF_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-13T18:15:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17,
+						10,
+						13
+					]
+				}
+			}
+		}
+	}
+}

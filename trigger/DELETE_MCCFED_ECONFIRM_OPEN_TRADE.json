@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_ECONFIRM_OPEN_TRADE",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in Oracle.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_ECONFIRM_OPEN_TRADE",
+					"sinkTableName": "DELETE_MCCFED_ECONFIRM_OPEN_TRADE",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "SEOT_SEQ_NUM",
+					"mccfedTableName": "MCC.ECONFIRM_OPEN_TRADE"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-10T20:22:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

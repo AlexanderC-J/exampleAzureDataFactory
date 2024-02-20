@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_MASTER_AGREEMENT",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in the Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_MASTER_AGREEMENT",
+					"sinkTableName": "DELETE_MCCFED_MASTER_AGREEMENT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "SMA_SEQ_NUM",
+					"mccfedTableName": "MCC.MASTER_AGREEMENT"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-10T20:51:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

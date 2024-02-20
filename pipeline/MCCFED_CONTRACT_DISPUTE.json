@@ -1,0 +1,283 @@
+{
+	"name": "MCCFED_CONTRACT_DISPUTE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.CONTRACT_DISPUTE",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SCD_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SCD_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DISPUTE_TO_ROLE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DISPUTE_TO_ROLE_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DISPUTE_CREATED_ROLE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DISPUTE_CREATED_ROLE_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTIVE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ACTIVE_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CON_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CON_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "SD_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SD_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "RESOLVED_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RESOLVED_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RESOLVED_CASE_AUDIT_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RESOLVED_CASE_AUDIT_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "RESOLVED_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RESOLVED_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RESOLVED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "RESOLVED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "NOTE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NOTE_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_CASE_AUDIT_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_CASE_AUDIT_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_CONTRACT_DISPUTE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_CONTRACT_DISPUTE",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"name": "MUNICHSHIR",
+	"properties": {
+		"type": "SelfHosted",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/f039aafc-bdda-4248-a57a-1c6efe2f0fd0/resourcegroups/shell-06-rg-mnxlovtkreerwcqaqclx/providers/Microsoft.DataFactory/factories/shell-06-eu-n-adf-nnjksdnadds/integrationruntimes/SHIRMunich",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}

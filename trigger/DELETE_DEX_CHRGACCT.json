@@ -1,0 +1,36 @@
+{
+	"name": "DELETE_DEX_CHRGACCT",
+	"properties": {
+		"description": "Weekly trigger to delete rows in SQL table deleted from Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_CHRGACCT_DELETE",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-04T12:21:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

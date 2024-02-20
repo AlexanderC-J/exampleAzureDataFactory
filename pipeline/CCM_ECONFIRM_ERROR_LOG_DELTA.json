@@ -1,0 +1,192 @@
+{
+	"name": "CCM_ECONFIRM_ERROR_LOG_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select * from CCMDBP.CCM_ECONFIRM_ERROR_LOG where CREATED_TSTMP > CURRENT_TIMESTAMP - 26/24 - 1/24",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"CEE_SEQ_NUM"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CEE_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CEE_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERR_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ERR_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERR_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ERR_DESC",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERR_EVENT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ERR_EVENT_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERR_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ERR_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERR_STATUSDATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ERR_STATUSDATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "CCM_ECONFIRM_ERROR_LOG",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_CCM_ECONFIRM_ERROR_LOG",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

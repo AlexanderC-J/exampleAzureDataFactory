@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_DEX_EVNTNARR",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL no longer in Oracle.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteDEX",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STO_EVNTNARR",
+					"sinkTableName": "DELETE_DEX_EVNTNARR",
+					"sourceDBName": "MIRDBP",
+					"Upsert_id": "SEQUENCE_NUM",
+					"dexTableName": "DEX.EVNTNARR"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-10T13:35:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

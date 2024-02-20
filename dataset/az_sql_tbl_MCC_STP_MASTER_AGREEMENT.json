@@ -1,0 +1,58 @@
+{
+	"name": "az_sql_tbl_MCC_STP_MASTER_AGREEMENT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SMA_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "SRCE_SYSTEM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SRCE_SYSTEM_KEY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SHORT_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "MASTER_AGREEMENT"
+		}
+	}
+}

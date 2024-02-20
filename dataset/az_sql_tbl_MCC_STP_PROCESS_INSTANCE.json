@@ -1,0 +1,102 @@
+{
+	"name": "az_sql_tbl_MCC_STP_PROCESS_INSTANCE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SPI_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "ACTION_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "KEY_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERROR_COUNT_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "ERROR_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SRCE_SYSTEM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SRCE_SYSTEM_KEY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CON_SEQ_NUM",
+				"type": "decimal",
+				"precision": 16,
+				"scale": 0
+			},
+			{
+				"name": "MESSAGE_RECEIVED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EXTERNAL_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "BATCH_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REPORTED_ACTION_IND",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "PROCESS_INSTANCE"
+		}
+	}
+}

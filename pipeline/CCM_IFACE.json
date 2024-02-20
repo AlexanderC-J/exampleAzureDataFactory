@@ -1,0 +1,85 @@
+{
+	"name": "CCM_IFACE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select * from ccm_iface\nwhere last_update_tstmp > '01-DEC-22' and transaction_type = 'M2M' and srce_system_code in ('DEX', 'ZAINET')",
+						"partitionOption": "None",
+						"convertDecimalToInteger": false,
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.CCM_IFACE",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "CCM_IFACE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_CCM_IFACE",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

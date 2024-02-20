@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_COMP_REPORTABLE_ENTITY",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table that are no longer in Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_COMP_REPORTABLE_ENTITY",
+					"sinkTableName": "DELETE_MCCFED_COMP_REPORTABLE_ENTITY",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "SCRE_SEQ_NUM",
+					"mccfedTableName": "MCC.COMP_REPORTABLE_ENTITY"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-10T18:26:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

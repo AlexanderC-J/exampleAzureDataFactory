@@ -1,0 +1,19 @@
+{
+	"name": "SOURCE_VIEW_BRIDGE_POWER_DELIVERY",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Endur_LNG",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Endur LNG"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "endur_slmt_data",
+			"table": "BRIDGE_POWER_DELIVERY"
+		}
+	}
+}

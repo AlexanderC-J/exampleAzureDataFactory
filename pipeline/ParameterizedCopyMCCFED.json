@@ -1,0 +1,166 @@
+{
+	"name": "ParameterizedCopyMCCFED",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE @{pipeline().parameters.sinkTableName}",
+							"type": "Expression"
+						},
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SEQUENCE_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SEQUENCE_NUM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DOC_FOLD_DESC_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DOC_FOLD_DESC_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OWNG_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OWNG_SEQ_NUM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ORD_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ORD_SEQ_NUM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FOLD_TYPE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FOLD_TYPE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DOC_TYPE_MAND_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DOC_TYPE_MAND_IND",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@pipeline().parameters.sourceTableName",
+								"type": "Expression"
+							},
+							"databaseName": {
+								"value": "@pipeline().parameters.sourceDBName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"sqlTableName": {
+								"value": "@pipeline().parameters.sinkTableName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"sourceTableName": {
+				"type": "string"
+			},
+			"sinkTableName": {
+				"type": "string"
+			},
+			"sourceDBName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "MCC FED/ParameterizedCopy"
+		},
+		"annotations": []
+	}
+}

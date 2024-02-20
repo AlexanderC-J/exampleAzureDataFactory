@@ -1,0 +1,32 @@
+{
+	"name": "TRIGGER_MCCFED_STP_IFACE_STAGING",
+	"properties": {
+		"description": "Trigger to delta load STP_IFACE_STAGING table at 10 am, 1 pm and 5 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_IFACE_STAGING_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-07T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						10,
+						17,
+						13
+					]
+				}
+			}
+		}
+	}
+}

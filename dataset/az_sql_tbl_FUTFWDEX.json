@@ -1,0 +1,212 @@
+{
+	"name": "az_sql_tbl_FUTFWDEX",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EXEC_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXCT_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "TRADER_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXEC_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EXEC_TIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FILL_GENERATED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BYR_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BYR_CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BYR_CTMT_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BBKR_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "SLR_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "SLR_CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SLR_CTMT_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SBKR_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "GRADE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEAL_CLASS_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEAL_TYPE_RT_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEAL_TYPE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SPREAD_DIFF_VAL",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 0
+			},
+			{
+				"name": "NUMBER_OF_LOTS_AMT",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "TRADED_PERIOD1_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADED_PERIOD2_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FRML_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FRML_VERS_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "FIXED_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "FIXED_PRICE_UNIT_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRCG_FROM_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PRCG_TO_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PREMIUM_AMT",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "PREMIUM_UNIT_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADE_TYPE_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USER_NOTES1_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "USER_NOTES2_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ARCHIVED_IND",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "FUTFWDEX"
+		}
+	}
+}

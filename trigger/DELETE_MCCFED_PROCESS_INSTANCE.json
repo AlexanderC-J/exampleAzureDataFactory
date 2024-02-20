@@ -1,0 +1,36 @@
+{
+	"name": "DELETE_MCCFED_PROCESS_INSTANCE",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in the Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_PROCESS_INSTANCE_DELETE",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-11T09:33:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

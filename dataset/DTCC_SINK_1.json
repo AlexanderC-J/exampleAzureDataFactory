@@ -1,0 +1,16 @@
+{
+	"name": "DTCC_SINK_1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dtcc_CO_ESMA_Daily_Trade_State_Report"
+		}
+	}
+}

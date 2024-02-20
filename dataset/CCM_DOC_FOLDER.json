@@ -1,0 +1,20 @@
+{
+	"name": "CCM_DOC_FOLDER",
+	"properties": {
+		"description": "CCM Folder for all folder names in Document Explorer",
+		"linkedServiceName": {
+			"referenceName": "MCC FED",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ITDAKL5",
+			"table": "DOC_FOLDER"
+		}
+	}
+}

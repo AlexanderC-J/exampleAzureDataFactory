@@ -1,0 +1,108 @@
+{
+	"name": "az_sql_tbl_DEX_GRADE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "GRADE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SHORT_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LONG_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GRADE_GROUP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OIL_TYPE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SULPHUR_VALUE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BT_FACTOR_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "LOC_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BRENT_EQUIV_WGTN_N",
+				"type": "decimal",
+				"precision": 7,
+				"scale": 0
+			},
+			{
+				"name": "FINANCE_GRADE_GP_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SEASONALITY_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ACTIVE_REC_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MSDS_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "OWNING_GRADE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PTD_REF_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "GRADE"
+		}
+	}
+}

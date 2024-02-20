@@ -1,0 +1,145 @@
+{
+	"name": "DEX_COMPADDR_DELETE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_TESH98BP_PRIM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select COMPANY_MNEM, ADDRESS_TYPE_CODE, SEQ_NUM   from MIRDBP.STO_COMPADDR",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE DELETE_DEX_COMPADDR",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "COMPANY_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPANY_MNEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESS_TYPE_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESS_TYPE_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 5
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_COMPADDR",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DELETE_DEX_COMPADDR",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Select_Rows_to_Delete_Then_Delete",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Copy_from_TESH98BP_PRIM",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "GCCONTRACT",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "delete from DEX.COMPADDR where COMPADDR_SEQ_NUM IN (select COMPADDR_SEQ_NUM from DEX.COMPADDR where CONCAT(COMPANY_MNEM, '\\', ADDRESS_TYPE_CODE, '\\', SEQ_NUM)   NOT IN (select CONCAT(COMPANY_MNEM, '\\', ADDRESS_TYPE_CODE, '\\', SEQ_NUM) from DELETE_DEX_COMPADDR))\n"
+						}
+					],
+					"scriptBlockExecutionTimeout": "06:40:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!"
+		},
+		"annotations": []
+	}
+}

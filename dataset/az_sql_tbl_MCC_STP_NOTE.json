@@ -1,0 +1,54 @@
+{
+	"name": "az_sql_tbl_MCC_STP_NOTE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "NOTE_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "NOTE_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOTE_TYPE_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "NOTE"
+		}
+	}
+}

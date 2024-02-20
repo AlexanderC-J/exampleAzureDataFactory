@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_CASE_AUDIT",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in Oracle.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED_Start31Dec2017",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_CASE_AUDIT",
+					"sinkTableName": "DELETE_MCCFED_CASE_AUDIT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "CASE_AUDIT_SEQ_NUM",
+					"mccfedTableName": "MCC.CASE_AUDIT"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-10T15:28:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

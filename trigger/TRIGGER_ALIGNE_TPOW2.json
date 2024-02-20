@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_ALIGNE_TPOW2",
+	"properties": {
+		"description": "Daily full copy of ALIGNE_TPOW2 table.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ALIGNE_TPOW2",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-10-31T14:34:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}

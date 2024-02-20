@@ -1,0 +1,17 @@
+{
+	"name": "GLEIF_latest_files_CDF_csv_delta_LastWeek",
+	"properties": {
+		"description": "HTTP linked service connection to GLEIF delta data.",
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://goldencopy.gleif.org/api/v2/golden-copies/publishes/lei2/latest.csv?delta=LastWeek",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "AIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "Source_Oracle_Endur_Crude",
+	"properties": {
+		"description": "ODW_DW.CRUDE_SOX_EXCLUDE_TRADE",
+		"linkedServiceName": {
+			"referenceName": "Endur",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ENDUR_CRUDE"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ODW_DW",
+			"table": "CRUDE_SOX_EXCLUDE_TRADE"
+		}
+	}
+}

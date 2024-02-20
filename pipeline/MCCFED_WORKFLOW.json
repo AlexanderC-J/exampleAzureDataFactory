@@ -1,0 +1,211 @@
+{
+	"name": "MCCFED_WORKFLOW",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.WORKFLOW",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SWF_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SWF_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "WORKFLOW_NAME_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WORKFLOW_NAME_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PROCEDURE_NAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROCEDURE_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPLEMENTATION_CLASS_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IMPLEMENTATION_CLASS_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "WORKFLOW_ACTION_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WORKFLOW_ACTION_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "WORKFLOW_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "WORKFLOW_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_WORKFLOW",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_WORKFLOW",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

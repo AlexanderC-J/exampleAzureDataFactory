@@ -1,0 +1,20 @@
+{
+	"name": "REGR2_MI_Align",
+	"properties": {
+		"description": "Application Reg R2.0MI",
+		"linkedServiceName": {
+			"referenceName": "ALIGNE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "REGS"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ZAINET",
+			"table": "CPTY"
+		}
+	}
+}

@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_MCCFED_CCM_IFACE",
+	"properties": {
+		"description": "Daily delta load at 10 am.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED10AM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "CCM_IFACE",
+					"sinkTableName": "CCM_IFACE",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"CI_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-11-03T12:32:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						10
+					]
+				}
+			}
+		}
+	}
+}

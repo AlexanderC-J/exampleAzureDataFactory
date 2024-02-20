@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_COMPADDR",
+	"properties": {
+		"description": "Daily delta load of DEX_COMPADDR table at 5:20 pm UKT.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_COMPADDR_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-14T17:15:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						20
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

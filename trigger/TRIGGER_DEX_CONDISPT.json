@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_CONDISPT",
+	"properties": {
+		"description": "Trigger to run delta load of CONSIPT table at 5:30 pm UKT daily.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_CONDISPT_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T15:12:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						30
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

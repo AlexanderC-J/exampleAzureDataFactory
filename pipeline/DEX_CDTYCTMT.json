@@ -1,0 +1,72 @@
+{
+	"name": "DEX_CDTYCTMT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_TESH98BP_PRIM",
+				"description": "WONA Parcel\nAMSDC1-A-TESH98BP.EUROPE.SHELL.COM:1648/TESH98BP_PRIM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select * from MIRDBP.STO_CDTYCTMT where COMMITMENT_DATE > '01-JAN-2016' OR COMMITMENT_DATE is NULL",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE DEX.CDTYCTMT",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_CDTYCTMT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_CDTYCTMT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!"
+		},
+		"annotations": []
+	}
+}

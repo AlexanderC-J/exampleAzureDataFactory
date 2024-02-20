@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_FUTFWDEX",
+	"properties": {
+		"description": "Trigger daily delta load of DEX_FUTFWDEX table at 5:10 pm.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_FUTFWDEX_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-13T20:36:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						10
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

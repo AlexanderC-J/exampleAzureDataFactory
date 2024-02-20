@@ -1,0 +1,19 @@
+{
+	"name": "az_sql_tbl_SEAm_Agreement",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZ_SQLDB_SEAm",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SEAm Netting"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ENDUR_Agreement"
+		}
+	}
+}

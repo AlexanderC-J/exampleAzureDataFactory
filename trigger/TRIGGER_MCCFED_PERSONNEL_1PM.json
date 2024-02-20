@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_MCCFED_PERSONNEL_1PM",
+	"properties": {
+		"description": "Trigger to run delta load of Personnel table at 1 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED1PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_PERSONNEL",
+					"sinkTableName": "PERSONNEL",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"PER_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-11-21T10:18:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						13
+					]
+				}
+			}
+		}
+	}
+}

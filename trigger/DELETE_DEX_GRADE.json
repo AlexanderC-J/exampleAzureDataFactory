@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_DEX_GRADE",
+	"properties": {
+		"description": "Weekly trigger to delete rows from sql table no longer in oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteDEX",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STO_GRADE",
+					"sinkTableName": "DELETE_DEX_GRADE",
+					"sourceDBName": "MIRDBP",
+					"Upsert_id": "GRADE_CODE",
+					"dexTableName": "DEX.GRADE"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-10T13:30:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

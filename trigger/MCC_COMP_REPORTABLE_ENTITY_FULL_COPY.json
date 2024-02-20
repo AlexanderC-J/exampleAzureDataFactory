@@ -1,0 +1,36 @@
+{
+	"name": "MCC_COMP_REPORTABLE_ENTITY_FULL_COPY",
+	"properties": {
+		"description": "Fortnightly truncate and then full copy of MCC.COMP_REPORTABLE_ENTITY table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_COMP_REPORTABLE_ENTITY",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 2,
+				"startTime": "2023-03-07T16:20:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						21
+					],
+					"weekDays": [
+						"Saturday"
+					]
+				}
+			}
+		}
+	}
+}

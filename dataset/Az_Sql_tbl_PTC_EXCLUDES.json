@@ -1,0 +1,19 @@
+{
+	"name": "Az_Sql_tbl_PTC_EXCLUDES",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZ_SQLDB_EXCLUDES",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "EXCLUDES"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Excludes"
+		}
+	}
+}

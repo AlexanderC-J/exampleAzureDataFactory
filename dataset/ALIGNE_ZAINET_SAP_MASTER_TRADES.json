@@ -1,0 +1,19 @@
+{
+	"name": "ALIGNE_ZAINET_SAP_MASTER_TRADES",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ALIGNE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ALIGNE/Retired"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ZAINET",
+			"table": "SAP_MASTERTRADES"
+		}
+	}
+}

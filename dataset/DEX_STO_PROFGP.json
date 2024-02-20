@@ -1,0 +1,91 @@
+{
+	"name": "DEX_STO_PROFGP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "PROFIT_GROUP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROFIT_GP_DESC_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADED_PERIOD_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STREAM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COST_OF_CAPITAL_A",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "COST_CAPTL_CALC_D",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "BUCKET_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "REF_ORDERS_MT_AMT",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ARCHIVED_IND",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "PROFGP"
+		}
+	}
+}

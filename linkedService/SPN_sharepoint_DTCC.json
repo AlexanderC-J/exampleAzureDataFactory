@@ -1,0 +1,10 @@
+{
+	"name": "SPN_sharepoint_DTCC",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://AZ-AS-AKV-EX-N-SEQ00915.vault.azure.net/"
+		}
+	}
+}

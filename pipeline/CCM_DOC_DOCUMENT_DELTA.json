@@ -1,0 +1,89 @@
+{
+	"name": "CCM_DOC_DOCUMENT_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delta_Load_from_1648_OESHA8FP",
+				"description": "Copies the delta data by filtering the data for last update time stamps more recent than the previous trigger and then upserting the delta data to SQL.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "SELECT DOC_KEY,\nESIGN_IND,\nDOC_FILE_NAME_TXT,\nFILE_EXT_TXT,\nLAST_UPDATE_TSTMP,\nTEMPLATE_SEQ_NUM,\nFED_SRC_TXT,\nLAST_UPDATE_USERID,\nMAIL_SUBJECT_TXT,\nMAIL_FROM_TXT,\nMAIL_RECEIVED_DATE\nFROM DOC_DOCUMENT where LAST_UPDATE_TSTMP > (CURRENT_TIMESTAMP - 26/24 - 1/24)",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": false,
+							"keys": [
+								"DOC_KEY"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "CCM_DOC_DOCUMENT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_CCM_DOC_DOCUMENT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

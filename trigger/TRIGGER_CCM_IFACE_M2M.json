@@ -1,0 +1,35 @@
+{
+	"name": "TRIGGER_CCM_IFACE_M2M",
+	"properties": {
+		"description": "Daily delta load to run at 10:30 am, 1:30 pm and 5:30 pm.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CCM_IFACE_M2M_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-12-28T16:10:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						30
+					],
+					"hours": [
+						10,
+						13,
+						17
+					]
+				}
+			}
+		}
+	}
+}

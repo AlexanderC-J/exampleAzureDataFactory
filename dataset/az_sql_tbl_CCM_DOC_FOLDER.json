@@ -1,0 +1,19 @@
+{
+	"name": "az_sql_tbl_CCM_DOC_FOLDER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "CCM_DOC_FOLDER"
+		}
+	}
+}

@@ -1,0 +1,165 @@
+{
+	"name": "DEX_PARCEL_DELETE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_TESH98BP_PRIM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select TRDG_COMP_MNEM, CONTRACT_NUM, PRCL_SEQ_NUM, ARCHIVED_IND, CONTRACT_CREATE_D  from MIRDBP.STO_PARCEL where (PARCEL_DATE > '01-JAN-2016' OR PARCEL_DATE is NULL)",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE DELETE_DEX_PARCEL",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "TRDG_COMP_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRDG_COMP_MNEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PRCL_SEQ_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRCL_SEQ_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ARCHIVED_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ARCHIVED_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_CREATE_D",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CONTRACT_CREATE_D",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_PARCEL",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DELETE_DEX_PARCEL",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Select_Rows_to_Delete_Then_Delete",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Copy_from_TESH98BP_PRIM",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "GCCONTRACT",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "delete from DEX.PARCEL where PARCEL_SEQ_NUM IN (select PARCEL_SEQ_NUM from DEX.PARCEL where CONCAT(TRDG_COMP_MNEM, '\\', CONTRACT_NUM, '\\', PRCL_SEQ_NUM, '\\', ARCHIVED_IND, '\\', CONVERT(nvarchar, CONTRACT_CREATE_D))   NOT IN (select CONCAT(TRDG_COMP_MNEM, '\\', CONTRACT_NUM, '\\', PRCL_SEQ_NUM, '\\', ARCHIVED_IND, '\\', CONVERT(nvarchar, CONTRACT_CREATE_D)) from DELETE_DEX_PARCEL))\n"
+						}
+					],
+					"scriptBlockExecutionTimeout": "06:40:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!"
+		},
+		"annotations": []
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "Excel1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DTCC",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DTCC"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "CO_ESMA_Daily_Trade_State_Repor",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CO_ESMA_Daily_Trade_State_Report_02502132-2020-08-28.06_48_53-en.csv",
+				"container": "dtcc"
+			},
+			"firstRowAsHeader": false
+		},
+		"schema": []
+	}
+}

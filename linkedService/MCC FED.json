@@ -1,0 +1,24 @@
+{
+	"name": "MCC FED",
+	"properties": {
+		"description": "MCC FED EXCLUDES\nAMSDC1-A-TESH98DP.EUROPE.SHELL.COM",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=AMSDC1-A-TESH98DP.EUROPE.SHELL.COM;port=1648;serviceName=TESH98DP_PRIM;user id=MCCPBI",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultGCPipeline",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sc-MCC-FED"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

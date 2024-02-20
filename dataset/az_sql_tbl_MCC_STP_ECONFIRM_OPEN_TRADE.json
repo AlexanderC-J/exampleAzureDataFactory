@@ -1,0 +1,122 @@
+{
+	"name": "az_sql_tbl_MCC_STP_ECONFIRM_OPEN_TRADE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SEOT_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "TRADE_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UTI_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_ICE_READ_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TRIOPTIMA_COL_UPDATE_STATUS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ICE_OTHER_CP_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADING_LEGAL_ENTITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SRCE_SYSTEM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SRCE_SYSTEM_KEY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ICE_CP_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUYER_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SELLER_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RMK_AFF_FLAG",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUY_SELL_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADE_XML",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERROR_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "ECONFIRM_OPEN_TRADE"
+		}
+	}
+}

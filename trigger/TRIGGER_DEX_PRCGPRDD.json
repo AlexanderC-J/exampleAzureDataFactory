@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_PRCGPRDD",
+	"properties": {
+		"description": "Daily delta load of DEX_PRCGPRDD table at 5:15 pm UKT.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_PRCGPRDD_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-14T16:52:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						15
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

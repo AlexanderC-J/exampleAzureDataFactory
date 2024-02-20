@@ -1,0 +1,136 @@
+{
+	"name": "ParameterizedDeleteMCCFED_Start31Dec2017",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Primary_Key_Column_to_Delete_Dummy_Table",
+				"description": "Copies column of primary key to a new table to allow for delete capability.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "select @{pipeline().parameters.Upsert_id} from @{pipeline().parameters.sourceDBName}.@{pipeline().parameters.sourceTableName} where CREATED_TSTMP > '31-DEC-17'",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"convertDecimalToInteger": false,
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE @{pipeline().parameters.sinkTableName}",
+							"type": "Expression"
+						},
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@pipeline().parameters.sourceTableName",
+								"type": "Expression"
+							},
+							"databaseName": {
+								"value": "@pipeline().parameters.sourceDBName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_dbo_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"sqlTableName": {
+								"value": "@pipeline().parameters.sinkTableName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Select_Rows_to_Delete_Then_Delete",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Copy_Primary_Key_Column_to_Delete_Dummy_Table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "GCCONTRACT",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": {
+								"value": "delete from @{pipeline().parameters.mccfedTableName} where @{pipeline().parameters.Upsert_id} IN (select @{pipeline().parameters.Upsert_id} from @{pipeline().parameters.mccfedTableName} where @{pipeline().parameters.Upsert_id} NOT IN (select @{pipeline().parameters.Upsert_id} from @{pipeline().parameters.sinkTableName}))\n",
+								"type": "Expression"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"sourceTableName": {
+				"type": "string"
+			},
+			"sinkTableName": {
+				"type": "string"
+			},
+			"sourceDBName": {
+				"type": "string"
+			},
+			"Upsert_id": {
+				"type": "string"
+			},
+			"mccfedTableName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "MCC FED/ParameterizedCopy"
+		},
+		"annotations": []
+	}
+}

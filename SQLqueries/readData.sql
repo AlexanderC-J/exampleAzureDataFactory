@@ -1,0 +1,1 @@
+select top (100) * from dbo.CCM_DOC_XREF

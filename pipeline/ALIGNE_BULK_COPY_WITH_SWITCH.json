@@ -1,0 +1,205 @@
+{
+	"name": "ALIGNE_BULK_COPY_WITH_SWITCH",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Source Table List",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select object_name as table_name\r\nfrom all_objects t\r\nwhere object_type = 'TABLE'\r\nand owner = 'ZAINET'\r\nand (object_name = 'BOOK' or object_name = 'CONTRACT' or object_name = 'CONTRACTAUX' or object_name = 'CPTY' or object_name = 'CPTYAUX' or object_name = 'MKT' or object_name = 'MRKTC' or object_name = 'SAP_MASTERTRADES' or object_name = 'USR' or object_name = 'TPOW2' or object_name = 'TPOWAUX')\r\norder by object_name",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "ALIGNE_ZAINET_TABLE_LIST",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "For Each Table",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Source Table List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Source Table List').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Switch1",
+							"type": "Switch",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"on": {
+									"value": "@item().Table_Name",
+									"type": "Expression"
+								},
+								"cases": [
+									{
+										"value": "TPOWAUX",
+										"activities": [
+											{
+												"name": "Copy Table 2",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"source": {
+														"type": "OracleSource",
+														"oracleReaderQuery": "select \n    TPOWAUX_TNUM\n    ,TPOWAUX_A_BUYSELL_OVERRIDE\t\n    ,TPOWAUX_A_CCER_TYPE\t\n    ,TPOWAUX_A_DELIVERYINTENT\t\n    ,TPOWAUX_A_EXCHANGE\t\n    ,TPOWAUX_A_GEN_DATE\t\n    ,TPOWAUX_A_1\t\n    ,TPOWAUX_A_2\t\n    ,TPOWAUX_A_3\t\n    ,TPOWAUX_A_VOLUME_CAP\t\n    ,TPOWAUX_A_VOLUME_OPT\t\n    ,TPOWAUX_A_PAPER_CONTRACT\t\n    ,TPOWAUX_A_SAP_MASTER\t\n    ,TPOWAUX_A_CPTY_TRAD_ID\t\n    ,TPOWAUX_A_INSTALLATIONS\t\n    ,TPOWAUX_A_PRICEOPTIONALITY\t\n    ,TPOWAUX_A_SAP_CHILD\t\n    ,TPOWAUX_A_MULTILEG\t\n    ,TPOWAUX_A_CPTY_GC\t\n    ,TPOWAUX_A_REPORTABLE\t\n    ,TPOWAUX_A_SO_CPTY\t\n    ,TPOWAUX_A_ACTION\t\n    ,TPOWAUX_A_INSTALLATION_ID\t\n    ,TPOWAUX_A_PROD_PRD_FRM\t\n    ,TPOWAUX_A_PROD_PRD_TO\t\n    ,TPOWAUX_A_ISSUE_DATE\t\n    ,TPOWAUX_A_EXPIRY_DATE\t\n    ,TPOWAUX_A_FROM_REGISTRY\t\n    ,TPOWAUX_A_TO_REGISTRY\t\n    ,TPOWAUX_A_AUDITDT\t\n    ,TPOWAUX_A_AUDITED\t\n    ,TPOWAUX_A_CERTDELIVERYPRD\t\n    ,TPOWAUX_A_CERTNUMBER\t\n    ,TPOWAUX_A_CERTSCHEME\t\n    ,TPOWAUX_A_DESTREGISTRY\t\n    ,TPOWAUX_A_EXPIRYDATE\t\n    ,TPOWAUX_A_FEEDSTOCK\t\n    ,TPOWAUX_A_GHGVALUE\t\n    ,TPOWAUX_A_GASBUNDLE\t\n    ,TPOWAUX_A_GASDELIVERYPRD\t\n    ,TPOWAUX_A_INJECTIONDATE\t\n    ,TPOWAUX_A_ISSUANCEPL\t\n    ,TPOWAUX_A_MASSBALTIME\t\n    ,TPOWAUX_A_ORIGINCTRY\t\n    ,TPOWAUX_A_ORIGINREGISTRY\t\n    ,TPOWAUX_A_RECPTNUM\t\n    ,TPOWAUX_A_REVOCATIONDT\t\n    ,TPOWAUX_A_SCHEME\t\n    ,TPOWAUX_A_SUBSIDISED\t\n    ,TPOWAUX_A_TRANSFERTYPE\t\n    ,TPOWAUX_A_TRANSPORTCAP\t\n    ,TPOWAUX_A_VALIDATIONST\t\n    ,TPOWAUX_A_GENPUR1_OVER\t\n    ,TPOWAUX_A_GENPUR2_OVER\t\n    ,TPOWAUX_A_GENPUR3_OVER\t\n    ,TPOWAUX_NOVATION_DATE\t\n    ,TPOWAUX_OLDCPTY_NAME\t\n    ,TPOWAUX_OLDUSI\t\n    ,TPOWAUX_CAICODE\t\n    ,TPOWAUX_CPBALGRP\t\n    ,TPOWAUX_LEBALGRP\t\n    ,TPOWAUX_A_AMEND_REASON\t\n    ,TPOWAUX_A_EXPLANATION\t\n    ,TPOWAUX_A_IGT_BOOK_REF\t\n    ,TPOWAUX_A_OVERRIDETYPE\t\n    ,TPOWAUX_A_OVERRIDEINPUT\t\n    ,TPOWAUX_A_OVERRIDEFREE\t\n    ,TPOWAUX_A_MATCHCODESUFFIX\t\n    ,TPOWAUX_A_NOMS_PROCESSED\t\n    ,TPOWAUX_A_COUNTRY_OF_ORIGIN\t\n    ,TPOWAUX_A_SOURCE_OF_ENERGY\t\n    ,TPOWAUX_A_SUBSIDISED_\t\n    ,TPOWAUX_A_EXPORTABLE\t\n    ,TPOWAUX_A_EUGOOSFORUK\t\n    ,TPOWAUX_A_OUTAGES\t\n    ,TPOWAUX_A_PROJECT_CODE\n    ,TPOWAUX_A_COMPATTR2\t\n    ,TPOWAUX_A_ASSET_LINKED\t\n    ,TPOWAUX_A_ASSET_NAME\n\nfrom ZAINET.TPOWAUX",
+														"partitionOption": "None",
+														"queryTimeout": "02:00:00"
+													},
+													"sink": {
+														"type": "AzureSqlSink",
+														"preCopyScript": "TRUNCATE TABLE ALIGNE.TPOWAUX",
+														"writeBehavior": "insert",
+														"sqlWriterUseTableLock": false,
+														"disableMetricsCollection": false
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "ALIGNE_ZAINET_TABLE",
+														"type": "DatasetReference",
+														"parameters": {
+															"TableName": {
+																"value": "TPOWAUX",
+																"type": "Expression"
+															},
+															"SchemaName": "ZAINET"
+														}
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "AZ_SQL_TABLE",
+														"type": "DatasetReference",
+														"parameters": {
+															"TableName": "TPOWAUX",
+															"SchemaName": "ALIGNE"
+														}
+													}
+												]
+											}
+										]
+									}
+								],
+								"defaultActivities": [
+									{
+										"name": "Copy Table",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "OracleSource",
+												"partitionOption": "None",
+												"queryTimeout": "02:00:00"
+											},
+											"sink": {
+												"type": "AzureSqlSink",
+												"preCopyScript": {
+													"value": "@{concat('TRUNCATE TABLE ALIGNE.', item().Table_Name)}",
+													"type": "Expression"
+												},
+												"writeBehavior": "insert",
+												"sqlWriterUseTableLock": false,
+												"disableMetricsCollection": false
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "ALIGNE_ZAINET_TABLE",
+												"type": "DatasetReference",
+												"parameters": {
+													"TableName": {
+														"value": "@item().Table_Name",
+														"type": "Expression"
+													},
+													"SchemaName": "ZAINET"
+												}
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "AZ_SQL_TABLE",
+												"type": "DatasetReference",
+												"parameters": {
+													"TableName": {
+														"value": "@item().Table_Name",
+														"type": "Expression"
+													},
+													"SchemaName": "ALIGNE"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "ALIGNE/Live"
+		},
+		"annotations": []
+	}
+}

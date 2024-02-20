@@ -1,0 +1,90 @@
+{
+	"name": "az_sql_tbl_CCM_ECONFIRM_REPORT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "REP_UNION_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRCL_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STRUCK_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DEAL_CLASS_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OWNER_COMPANY_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CLIENT_COMPANY_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STATUS_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CHARGE_ACCT_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMIR_REPORTABLE_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RISK_MARKETING_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INTERGROUP_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_BY_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DEAL_ENTRY_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "CCM_ECONFIRM_REPORT"
+		}
+	}
+}

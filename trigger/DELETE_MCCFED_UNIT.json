@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_UNIT",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_UNIT",
+					"sinkTableName": "DELETE_MCCFED_UNIT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "UNT_SEQ_NUM",
+					"mccfedTableName": "MCC.UNIT"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-11T09:59:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

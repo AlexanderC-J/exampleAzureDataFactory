@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_DEX_EVNTNARR",
+	"properties": {
+		"description": "Daily delta load of DEX_EVNTNARR table at 5:25 pm UKT.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyDEX5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STO_EVNTNARR",
+					"sinkTableName": "EVNTNARR",
+					"sourceDBName": "MIRDBP",
+					"Upsert_id": [
+						"SEQUENCE_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-14T17:32:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						25
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"name": "az_sql_tbl_DELETE_DEX_PRCLDCH",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ARCHIVED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRCL_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DELETE_DEX_PRCLDCH"
+		}
+	}
+}

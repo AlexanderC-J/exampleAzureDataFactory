@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_DEX_CORPENT",
+	"properties": {
+		"description": "Trigger to delta load DEX_CORPENT table at 5 pm daily.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyDEX5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STO_CORPENT",
+					"sinkTableName": "CORPENT",
+					"sourceDBName": "MIRDBP",
+					"Upsert_id": [
+						"CORPORATE_ENTITY_C"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-08T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "Parquet2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_dls_GCPipeline",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GLEIF"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "GLEIF2.parquet",
+				"fileSystem": "gleif-parquet"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

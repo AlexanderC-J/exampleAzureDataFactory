@@ -1,0 +1,74 @@
+{
+	"name": "az_sql_tbl_DEX_CONSTOPR",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TRADING_SYSTEM_MN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_CREATE_D",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CONTSTOP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTSTOP_TEXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INSERTED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INSERTED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "CONSTOPR"
+		}
+	}
+}

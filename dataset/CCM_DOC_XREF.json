@@ -1,0 +1,19 @@
+{
+	"name": "CCM_DOC_XREF",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MCC FED",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ITDAKL5",
+			"table": "DOC_XREF"
+		}
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "Endur_P",
+	"properties": {
+		"description": "Endur-P DW Connection (PROD)",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=amsdc1-u-s00038.europe.shell.com;port=1648;serviceName=OESHA8FP;user id=ST0433SOX",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultGCPipeline",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sc-ENDUR-P"
+			}
+		},
+		"connectVia": {
+			"referenceName": "MUNICHSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

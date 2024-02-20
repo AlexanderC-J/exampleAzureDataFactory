@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_MCCFED_STP_CASE_AUDIT_5PM",
+	"properties": {
+		"description": "Trigger to run delta load of Case Audit table at 5 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_CASE_AUDIT",
+					"sinkTableName": "CASE_AUDIT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"CASE_AUDIT_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-08-23T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "MCC_STP_COMMITMENT",
+	"properties": {
+		"description": "Main Commitment Table in MCC comprising all parties (internal and external) from all trade entry systems that require MCC for contractual or reporting purposes",
+		"linkedServiceName": {
+			"referenceName": "MCC FED",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "CCMDBP",
+			"table": "STP_COMMITMENT"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "DEX_STO_NEWTRADE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WONA DWH",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MIRDBP",
+			"table": "STO_NEWTRADE"
+		}
+	}
+}

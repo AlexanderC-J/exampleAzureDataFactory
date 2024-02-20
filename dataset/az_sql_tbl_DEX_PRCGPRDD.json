@@ -1,0 +1,152 @@
+{
+	"name": "az_sql_tbl_DEX_PRCGPRDD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SEQUENCE_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CALENDAR_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRD_DEF_TYPE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SEDATE_OD_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BASE_EVENT_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OFFSET_F_BEVENT_N",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "BDATE_OD_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIXED_BASE_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INCL_BDATE_QUOTE_I",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STRT_DATE_OFFSET_N",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "FXD_PRD_STRT_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CALC_PRD_STRT_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "END_DATE_OFFSET_N",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "FXD_PRD_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CALC_PRD_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WEND_USE_OTH_DAY_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WEND_PRD_BNDS_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HLDY_USE_OTH_DAY_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "HLDY_PRD_BNDS_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "XCL_HIGH_QUOTES_N",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "XCL_LOW_QUOTES_N",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ARCHIVED_IND",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "PRCGPRDD"
+		}
+	}
+}

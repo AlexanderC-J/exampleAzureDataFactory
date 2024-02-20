@@ -1,0 +1,233 @@
+{
+	"name": "CCM_DOC_DEX_XREF_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select * from ITDAKL5.DOC_DEX_XREF where LAST_UPDATE_TSTMP > CURRENT_TIMESTAMP - 26/24 - 1/24",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"TRDG_COMP_MNEM",
+								"CONTRACT_NUM",
+								"PRCL_SEQ_NUM",
+								"DOC_SEQ_NUM",
+								"CONTRACT_CREATE_D"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DOC_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DOC_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "CTMT_SEQ_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CTMT_SEQ_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRDG_COMP_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRDG_COMP_MNEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PRCL_SEQ_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRCL_SEQ_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "VOYAGE_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "VOYAGE_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "SHARED_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SHARED_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PUBLISH_EXT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PUBLISH_EXT_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "FED_DOC_TYPE_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FED_DOC_TYPE_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "SHARED_XDECLARS_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SHARED_XDECLARS_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_CREATE_D",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CONTRACT_CREATE_D",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "CCM_DOC_DEX_XREF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_CCM_DOC_DEX_XREF",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

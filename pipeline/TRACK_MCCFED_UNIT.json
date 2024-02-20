@@ -1,0 +1,63 @@
+{
+	"name": "TRACK_MCCFED_UNIT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Count Source",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "MCC FED",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "select count(*) from CCMDBP.STP_UNIT"
+						}
+					],
+					"scriptBlockExecutionTimeout": "06:00:00"
+				}
+			},
+			{
+				"name": "Count Sink",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select count(*) from MCC_UNIT",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "az_sql_tbl_UNIT",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Tracking"
+		},
+		"annotations": []
+	}
+}

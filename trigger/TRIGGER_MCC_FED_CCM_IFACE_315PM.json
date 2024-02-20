@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_MCC_FED_CCM_IFACE_315PM",
+	"properties": {
+		"description": "This extra trigger is there to cover all processes that occur between 12-1pm for MtM uploads which are not picked up by the 10am refresh",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED10AM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "CCM_IFACE",
+					"sinkTableName": "CCM_IFACE",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"CI_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-11-15T09:08:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						15
+					],
+					"hours": [
+						15
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GLEIF"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "GLEIF.parquet",
+				"container": "gleif-parquet"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

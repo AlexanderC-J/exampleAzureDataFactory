@@ -1,0 +1,261 @@
+{
+	"name": "CCM_ECONFIRM_REPORT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE CCM_ECONFIRM_REPORT",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "REP_UNION_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REP_UNION_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRDG_COMP_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRDG_COMP_MNEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PRCL_SEQ_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRCL_SEQ_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "STRUCK_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "STRUCK_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "DEAL_CLASS_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEAL_CLASS_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "OWNER_COMPANY_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OWNER_COMPANY_MNEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CLIENT_COMPANY_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLIENT_COMPANY_MNEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "STATUS_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATUS_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CHARGE_ACCT_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHARGE_ACCT_MNEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "EMIR_REPORTABLE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMIR_REPORTABLE_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RISK_MARKETING_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RISK_MARKETING_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERGROUP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERGROUP_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "DEAL_ENTRY_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DEAL_ENTRY_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "CCM_ECONFIRM_REPORT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_CCM_ECONFIRM_REPORT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": []
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"name": "MCC_STP_Parameterised",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MCC FED",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			},
+			"databaseName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().databaseName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_PARTY",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in the Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_PARTY",
+					"sinkTableName": "DELETE_MCCFED_PARTY",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "PAR_SEQ_NUM",
+					"mccfedTableName": "MCC.PARTY"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-11T08:49:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

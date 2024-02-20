@@ -1,0 +1,332 @@
+{
+	"name": "ParameterizedDeltaCopyDEX_Backup",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delta_Load_from_1648_OESHA8FP",
+				"description": "Copies the delta data by filtering the data for last update time stamps more recent than the previous trigger and then upserting the delta data to SQL.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "select * from @{pipeline().parameters.sourceDBName}.@{pipeline().parameters.sourceTableName} where LAST_UPDATE_TSTMP > (CURRENT_TIMESTAMP - 2 - 1/24)",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": {
+								"value": "@pipeline().parameters.Upsert_id",
+								"type": "Expression"
+							}
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CORPORATE_ENTITY_C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CORPORATE_ENTITY_C",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXP_CLUB_MEM_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EXP_CLUB_MEM_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHORT_NAME_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SHORT_NAME_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAME_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NAME_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LOCATION_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LOCATION_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESS_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESS_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BR_OPS_TELEX_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BR_OPS_TELEX_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BR_OPS_CTCT_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BR_OPS_CTCT_USERID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SAP_ACCOUNT_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SAP_ACCOUNT_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXP_CLUB_COMP_MNEM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EXP_CLUB_COMP_MNEM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BR_OPS_TELEX_TEL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BR_OPS_TELEX_TEL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CALENDAR_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CALENDAR_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STRT_WKG_DAY_TM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "STRT_WKG_DAY_TM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "END_WKG_DAY_TM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "END_WKG_DAY_TM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GTN_MEMBER_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GTN_MEMBER_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GTN_SAP_COMPANY_I",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GTN_SAP_COMPANY_I",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OFFSET_FROM_GMT_C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OFFSET_FROM_GMT_C",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NAME_2_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NAME_2_TEXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELETED_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELETED_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_RUN_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_RUN_TSTMP",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SDW_VERSION_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SDW_VERSION_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REACH_REG_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REACH_REG_IND",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@pipeline().parameters.sourceTableName",
+								"type": "Expression"
+							},
+							"databaseName": {
+								"value": "@pipeline().parameters.sourceDBName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DEX_Parameterised_2",
+						"type": "DatasetReference",
+						"parameters": {
+							"sqlTableName": {
+								"value": "@pipeline().parameters.sinkTableName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"sourceTableName": {
+				"type": "string"
+			},
+			"sinkTableName": {
+				"type": "string"
+			},
+			"sourceDBName": {
+				"type": "string"
+			},
+			"Upsert_id": {
+				"type": "array"
+			}
+		},
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!/ParameterizedCopy"
+		},
+		"annotations": []
+	}
+}

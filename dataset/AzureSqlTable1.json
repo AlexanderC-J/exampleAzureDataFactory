@@ -1,0 +1,685 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DTCC"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Trade / Allege",
+				"type": "nvarchar"
+			},
+			{
+				"name": " Trade ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trade Party Transaction ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Report tracking number ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Complex trade component ID ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reporting Counterparty ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type of ID of the other Counterparty ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ID of the other counterparty",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trade Party 1 - Execution Agent ID ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trade Party 2 - Execution Agent ID ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Action type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Level ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reporting timestamp",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Report submitting entity ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Exchange Traded Indicator  ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trade Party 1 - Third Party Viewer ID Type ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trade Party 1 - Third Party Viewer ID ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Name of the counterparty ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Domicile of the counterparty ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Contract with non-EEA counterparty ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country of the other counterparty ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Corporate sector of the reporting counterparty",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Financial or non-financial nature of the counterparty ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Nature of the reporting counterparty ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Broker ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Clearing member ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Type of ID of the Beneficiary ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Beneficiary ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trading capacity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Counterparty side",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Directly linked to commercial activity or treasury financing",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Clearing threshold",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Taxonomy used ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product ID 1 ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product ID 2 ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Contract type ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Asset class ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product classification type ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product classification ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product identification type ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Product identification ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Underlying identification type ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Underlying identification",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Deliverable currency",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Option type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Option exercise style",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Strike price (cap floor rate)",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Strike price notation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Maturity date of the underlying ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Venue of Execution",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Compression",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Price   rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Price notation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of price ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Notional",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Notional currency 1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Notional currency 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Price multiplier",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quantity",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Up-front payment",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Delivery type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Execution timestamp",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Effective date",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Maturity date",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Termination date",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Settlement date",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Master Agreement type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Master Agreement version",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Confirmation timestamp",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Confirmation means",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Clearing obligation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Cleared",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Clearing timestamp",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "CCP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Intragroup",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate of leg 1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate of leg 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate day count ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate day count leg 1 ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate day count leg 2 ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed leg payment frequency ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate payment frequency leg 1 -time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate payment frequency leg 1 - multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate payment frequency leg 2 - time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Fixed rate payment frequency leg 2 - multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate payment frequency ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate payment frequency leg 1 - time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate payment frequency leg 1 - multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate payment frequency leg 2 - time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate payment frequency leg 2 - multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reset frequency ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reset frequency leg 1 - time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reset frequency leg 1 - multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reset frequency leg 2- time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reset frequency leg 2 - multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate of leg 1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reference period leg 1 - time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reference period leg 1 - multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate of leg 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reference period leg 2 - time period ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Floating rate reference period leg 2 -multiplier ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Delivery currency 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Exchange rate 1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Forward exchange rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Exchange rate basis",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Commodity base",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Commodity details",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Delivery point or zone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Interconnection Point",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Load type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Load delivery intervals ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Delivery start date and time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Delivery end date and time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Duration ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Days of the week ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Contract capacity ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Delivery capacity ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Quantity Unit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Price time interval quantities",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Seniority ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reference entity ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Frequency of payment ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "The calculation basis ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Series ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Version ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Index factor ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Tranche ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Attachment point ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Detachment point ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Value of contract",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the value",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Valuation timestamp",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Valuation type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Collateralisation",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Collateral portfolio",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Collateral portfolio code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Value of the collateral ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the collateral value ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Initial margin posted ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the initial margin posted ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Variation margin posted ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the variation margins posted ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Initial margin received ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the initial margin received ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Variation margin received ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the variation margins received ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Excess collateral posted ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the excess collateral posted ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Excess collateral received ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Currency of the excess collateral received ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pairing Status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Pairing Source",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Matching Status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reserved - Participant Use 1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reserved - Participant Use 2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reserved - Participant Use 3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reserved - Participant Use 4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Reserved - Participant Use 5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Valuation Data Submitter",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Collateral Link Data Submitter",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Collateral Value Data Submitter",
+				"type": "nvarchar"
+			},
+			{
+				"name": " Settlement Date 2",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "Trade Party 1 - Mandatory Delegated Reporting",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Trade Party 2 - Mandatory Delegated Reporting",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dtcc_CO_ESMA_Daily_Trade_State_Report"
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"name": "DEX_STO_Parameterised",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "WONA DWH",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			},
+			"databaseName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().databaseName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	}
+}

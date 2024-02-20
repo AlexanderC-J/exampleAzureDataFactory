@@ -1,0 +1,86 @@
+{
+	"name": "MCCFED_PROCESS_INSTANCE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "SELECT\n    stp_process_instance.spi_seq_num                      AS spi_seq_num,\n    stp_process_instance.action_txt                 AS action_txt,\n    stp_process_instance.key_txt                  AS key_txt,\n    stp_process_instance.status_ind                    AS status_ind,\n    stp_process_instance.error_count_num         AS error_count_num,\n    stp_process_instance.error_txt                      AS error_txt,\n    stp_process_instance.created_userid         AS created_userid,\n    stp_process_instance.created_tstmp                      AS created_tstmp,\n    stp_process_instance.last_update_userid                  AS last_update_userid,\n    stp_process_instance.last_update_tstmp                 AS last_update_tstmp,\n    stp_process_instance.SRCE_SYSTEM_CODE                   AS SRCE_SYSTEM_CODE,\n    stp_process_instance.srce_system_key                      AS srce_system_key,\n    stp_process_instance.con_seq_num              AS con_seq_num,\n    stp_process_instance.message_received_tstmp            AS message_received_tstmp,\n    stp_process_instance.external_seq_num               AS external_seq_num,\n    stp_process_instance.batch_id                    AS batch_id,\n    stp_process_instance.reported_action_ind                   AS reported_action_ind\nFROM\n    stp_process_instance WHERE SRCE_SYSTEM_CODE IN ('ENDUR-LNG','ZAINET','DEX') AND created_tstmp > '01-JAN-2022'",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.PROCESS_INSTANCE",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"validateDataConsistency": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_PROCESS_INSTANCE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_PROCESS_INSTANCE",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

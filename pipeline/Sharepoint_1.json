@@ -1,0 +1,134 @@
+{
+	"name": "Sharepoint_1",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetBearerToken",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://accounts.accesscontrol.windows.net/db1e96a8-a3da-442a-930b-235cac24cd5c/tokens/OAuth/2",
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded"
+					},
+					"body": "grant_type=client_credentials&client_id=9896eec2-0019-4a07-9ce9-10c5e0f05ecf@db1e96a8-a3da-442a-930b-235cac24cd5c&client_secret=@activity('Web1').output.value&resource=00000003-0000-0ff1-ce00-000000000000/eu001-sp.shell.com.sharepoint.com@db1e96a8-a3da-442a-930b-235cac24cd5c"
+				}
+			},
+			{
+				"name": "CopyDataFromSPO",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "GetBearerToken",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET",
+							"additionalHeaders": {
+								"value": "@{concat('Authorization: Bearer ', activity('GetBearerToken').output.access_token)}",
+								"type": "Expression"
+							},
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE dtcc_CO_ESMA_Daily_Trade_State_Report",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "HTTP_sharepoint_DTCC_1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DTCC_SINK_1",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://az-as-akv-ex-n-seq00915.vault.azure.net/secrets/086f7a6d0cfc4864be24secret/8ed857cc3bab42499fdb4c65ceb5b888?api-version=7.0",
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "GET",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "DTCC"
+		},
+		"annotations": []
+	}
+}

@@ -1,0 +1,224 @@
+{
+	"name": "GLEIF_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "GLEIF copy to Blob",
+				"description": "ADF copy process to load open source data from GLEIF using HTTP connection to Azure blob storage.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings",
+							"compressionProperties": {
+								"type": "ZipDeflateReadSettings"
+							}
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "GLEIF_delta",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Binary2",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "GLEIF copy to SQL",
+				"description": "ADF copy process to copy GLEIF data from blob storage to azure SQL table.",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "GLEIF copy to Blob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"LEI"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LEI",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalName",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.Country",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntityStatus",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.EntityStatus",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.InitialRegistrationDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.InitialRegistrationDate",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.LastUpdateDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.LastUpdateDate",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.RegistrationStatus",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.RegistrationStatus",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.ValidationSources",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.ValidationSources",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "GLEIF_2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "GLEIF",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "GLEIF/Live"
+		},
+		"annotations": []
+	}
+}

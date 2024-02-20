@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_WORKFLOW",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_WORKFLOW",
+					"sinkTableName": "DELETE_MCCFED_WORKFLOW",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "SWF_SEQ_NUM",
+					"mccfedTableName": "MCC.WORKFLOW"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-11T10:03:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_PARCEL",
+	"properties": {
+		"description": "Trigger the delta load of DEX_PARCEL table at 5:40 pm daily.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_PARCEL_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T17:23:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						40
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"name": "Endur_LNG",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Data Source=shell-01-eun-sq-yqdgvswztemplburonfj.database.windows.net;Initial Catalog=shell-01-eun-sqdw-kcwepgnmwgpalqxuhvva;User ID=GlobalContractuat",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultGCPipeline",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sc-ENDUR-LNG"
+			}
+		},
+		"connectVia": {
+			"referenceName": "MUNICHSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

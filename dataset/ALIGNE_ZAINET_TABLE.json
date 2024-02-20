@@ -1,0 +1,33 @@
+{
+	"name": "ALIGNE_ZAINET_TABLE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ALIGNE",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			},
+			"SchemaName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "ALIGNE/Live"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().SchemaName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
+	}
+}

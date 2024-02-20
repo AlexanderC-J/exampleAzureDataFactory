@@ -1,0 +1,274 @@
+{
+	"name": "MCCFED_TRADED_INSTRUMENT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.TRADED_INSTRUMENT",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "STI_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "STI_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SHORT_NAME_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SHORT_NAME_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LONG_NAME_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LONG_NAME_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INST_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INST_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "PUBLICATION_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PUBLICATION_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PUBLICATION_HEADER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PUBLICATION_HEADER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CUR_SEQ_NUM",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CUR_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "CRUDE_PROD_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CRUDE_PROD_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DEL_POINT_KEY_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEL_POINT_KEY_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DEL_POINT_LONG_NAME_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEL_POINT_LONG_NAME_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DEL_POINT_SHORT_NAME_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEL_POINT_SHORT_NAME_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADED_INSTRUMENT_TYPE_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRADED_INSTRUMENT_TYPE_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LEASE_SHORT_NAME_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LEASE_SHORT_NAME_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_TRADED_INSTRUMENT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_TRADED_INSTRUMENT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

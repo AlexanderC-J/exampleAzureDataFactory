@@ -1,0 +1,19 @@
+{
+	"name": "ALIGNE_ZAINET_TPOW",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ALIGNE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ALIGNE/Live"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ZAINET",
+			"table": "TPOW"
+		}
+	}
+}

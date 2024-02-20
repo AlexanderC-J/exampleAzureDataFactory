@@ -1,0 +1,124 @@
+{
+	"name": "ALIGNE_BULK_COPY",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Source Table List",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select object_name as table_name\r\nfrom all_objects t\r\nwhere object_type = 'TABLE'\r\nand owner = 'ZAINET'\r\nand (object_name = 'BOOK' or object_name = 'CONTRACT' or object_name = 'CONTRACTAUX' or object_name = 'CPTY' or object_name = 'CPTYAUX' or object_name = 'MKT' or object_name = 'MRKTC' or object_name = 'SAP_MASTERTRADES' or object_name = 'USR' or object_name = 'TPOW2')\r\norder by object_name",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"dataset": {
+						"referenceName": "ALIGNE_ZAINET_TABLE_LIST",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "For Each Table",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Source Table List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Source Table List').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Copy Table",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "OracleSource",
+									"partitionOption": "None",
+									"queryTimeout": "02:00:00"
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"preCopyScript": {
+										"value": "@{concat('TRUNCATE TABLE ALIGNE.', item().Table_Name)}",
+										"type": "Expression"
+									},
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ALIGNE_ZAINET_TABLE",
+									"type": "DatasetReference",
+									"parameters": {
+										"TableName": {
+											"value": "@item().Table_Name",
+											"type": "Expression"
+										},
+										"SchemaName": "ZAINET"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AZ_SQL_TABLE",
+									"type": "DatasetReference",
+									"parameters": {
+										"TableName": {
+											"value": "@item().Table_Name",
+											"type": "Expression"
+										},
+										"SchemaName": "ALIGNE"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "ALIGNE/Retired"
+		},
+		"annotations": []
+	}
+}

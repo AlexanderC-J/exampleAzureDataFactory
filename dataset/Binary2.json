@@ -1,0 +1,21 @@
+{
+	"name": "Binary2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GLEIF"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "gleif2.csv",
+				"container": "gleif"
+			}
+		}
+	}
+}

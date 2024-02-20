@@ -1,0 +1,480 @@
+{
+	"name": "az_sql_tbl_CONTRACT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEAL_CLASS_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SPOT_TERM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEALS_DONE_REG_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VLDT_LEVEL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_DATE",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "CTLX_REQUEST_CODE",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "DAUTH_REQUEST_CODE",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CRAT_REQUEST_CODE",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "LKD_CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CURRENCY_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SETL_METHOD_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADER_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OWNG_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CLT_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CLIENT_REF_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTACT_NAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CLT_TRADER_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CTRACL_QTY_AMT",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 4
+			},
+			{
+				"name": "CTRACL_QTY_UNIT_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOLERANCE_RULE_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TOLERANCE_MIN_AMT",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 4
+			},
+			{
+				"name": "TOLERANCE_MAX_AMT",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 4
+			},
+			{
+				"name": "TLNCE_OPT_TYP_RT_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TLNCE_OPT_TYP_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_PRCL_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "THEIR_OPERATOR_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SAFE_STORE_FILE_N",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_APPV_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "APPROVED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "APPROVED_TIMESTAMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "APPROVAL_REVKD_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REVOKED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REVOKED_TIMESTAMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "RCVD_BY_FINANCE_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECEIVED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RECEIVED_TIMESTAMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "FASTSWAP_ADDED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FNCE_USER_SETL_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NEXT_REVIEW_DATE",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "LAST_REVIEW_DATE",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "EVERGREEN_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CLIENT_REASSIGN_I",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SINGLE_SETTLMNT_I",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "VALIDATED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOCUMENTED_BY_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_AGREED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_AGREED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_AGREED_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "CPTY_CRAT_REQ_CODE",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "PROV_PRCG_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROV_PRCG_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "PROV_PRCG_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_ACKNOW_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_ACKNOW_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "DOC_ACKNOW_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TDL_EXCLUDE_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TDL_EXCLUDE_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "TDL_EXCLUDE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NVA_EXCP_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NVA_EXCP_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "NVA_EXCP_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NVA_APPV_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NVA_APPV_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "NVA_APPV_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RPTG_CCY_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MKT_MARGIN_PCT",
+				"type": "decimal",
+				"precision": 7,
+				"scale": 4
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ARCHIVED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_STD_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_STD_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SUPPLY_TRADE_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_CREATE_D",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "CLEARED_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOCUMENTED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOCUMENTED_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "TDL_EXCLUDE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISPUTE_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISPUTE_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "DISPUTE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_WF_DISP_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_WF_DISP_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "NON_WF_DISP_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CPTY_CAN_EXTD_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CPTY_CAN_CANC_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_STD_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_STD_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "ALT_DEM_ACCT_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FRGHT_COSTS_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRE_CHK_REF_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRE_CHK_REF_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_USD_FIXED_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 4
+			},
+			{
+				"name": "FX_CONV_PUBLICAT_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UMBRELLA_AGREE_I",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EFS_CHRG_ACCT_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "APPROVAL_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "APPROVAL_TSTMP",
+				"type": "datetime2",
+				"scale": 0
+			},
+			{
+				"name": "APPROVAL_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WORLD_SCALE_RATE",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "CONTRACT"
+		}
+	}
+}

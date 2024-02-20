@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_MCCFED_STP_ECONFIRM_OPEN_TRADE_5pm",
+	"properties": {
+		"description": "Trigger to run delta load of ECONFIRM_OPEN_TRADE table at 5 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_ECONFIRM_OPEN_TRADE",
+					"sinkTableName": "ECONFIRM_OPEN_TRADE",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"SEOT_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-03T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

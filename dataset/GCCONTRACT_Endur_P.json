@@ -1,0 +1,16 @@
+{
+	"name": "GCCONTRACT_Endur_P",
+	"properties": {
+		"description": "EXCLUDES\nPER TRANSACTION CONTROL",
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ENDUR_CRUDE"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

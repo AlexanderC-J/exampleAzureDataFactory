@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_ALIGNE_CPTY",
+	"properties": {
+		"description": "Daily full copy of ALIGNE_CPTY table.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ALIGNE_CPTY",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-10-26T12:01:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,330 @@
+{
+	"name": "MCCFED_ECONFIRM_OPEN_TRADE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.ECONFIRM_OPEN_TRADE",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SEOT_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SEOT_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "TRADE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TRADE_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "END_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "END_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "UTI_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UTI_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_ICE_READ_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_ICE_READ_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "TRIOPTIMA_COL_UPDATE_STATUS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRIOPTIMA_COL_UPDATE_STATUS",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ICE_OTHER_CP_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ICE_OTHER_CP_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADING_LEGAL_ENTITY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRADING_LEGAL_ENTITY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ICE_CP_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ICE_CP_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "BUYER_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUYER_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SELLER_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SELLER_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "RMK_AFF_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RMK_AFF_FLAG",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "BUY_SELL_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUY_SELL_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "STATUS_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATUS_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADE_XML",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRADE_XML",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERROR_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ERROR_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_ECONFIRM_OPEN_TRADE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_ECONFIRM_OPEN_TRADE",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

@@ -1,0 +1,240 @@
+{
+	"name": "az_sql_tbl_BOOK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ALIGNE/Retired"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "BOOK_ACTIVE",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_AGEN",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_AOP0",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ADATE0",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BOOK_ATIME0",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_AOP1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ADATE1",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BOOK_ATIME1",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_ALF",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BOOK_AOHM",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BOOK_ROHM",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BOOK_REFRESH",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_ZKEY",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_XKEY",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_UTIL1",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_UTIL2",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_BOOK",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_DSC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_SUBDATAGRP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ZGRID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ACCT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR6",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR7",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR8",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ATTR9",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_XREF",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_XREFI",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_HEDGE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_REALTIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_BREAKDOWN",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_HOUSE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ACCTSUB1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ACCTSUB2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ACCTSUB3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ACCTSUB4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ACCTSUB5",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_ACCTSUB6",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_SECID",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "BOOK_HSEC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_CCY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_BUSUNIT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BOOK_PROFITCENTER",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ALIGNE",
+			"table": "BOOK"
+		}
+	}
+}

@@ -1,0 +1,198 @@
+{
+	"name": "DEX_CONSTOPR",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_TESH98BP_PRIM",
+				"description": "WONA Parcel\nAMSDC1-A-TESH98BP.EUROPE.SHELL.COM:1648/TESH98BP_PRIM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE DEX.CONSTOPR",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "TRADING_SYSTEM_MN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRADING_SYSTEM_MN",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_NUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_CREATE_D",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CONTRACT_CREATE_D",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "CONTSTOP_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTSTOP_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTSTOP_TEXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTSTOP_TEXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "INSERTED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "INSERTED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "INSERTED_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INSERTED_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DELETED_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELETED_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_RUN_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_RUN_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "SDW_VERSION_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SDW_VERSION_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_CONSTOPR",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DEX_CONSTOPR",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!"
+		},
+		"annotations": []
+	}
+}

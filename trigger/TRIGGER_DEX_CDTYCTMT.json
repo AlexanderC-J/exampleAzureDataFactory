@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_CDTYCTMT",
+	"properties": {
+		"description": "Trigger to delta load daily DEX_CDTYDTMT table at 5:35 pm UKT.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_CDTYCTMT_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T16:04:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						35
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

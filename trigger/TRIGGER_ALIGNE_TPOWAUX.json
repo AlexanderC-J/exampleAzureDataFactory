@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_ALIGNE_TPOWAUX",
+	"properties": {
+		"description": "Daily full copy of ALIGNE_TPOWAUX table.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ALIGNE_TPOWAUX",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-10-31T14:35:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_MCCFED_STP_COMP_REPORTABLE_ENTITY_10AM",
+	"properties": {
+		"description": "Trigger to run delta load of STP_COMP_REPORTABLE_ENTITY table at 10 am UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED10AM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_COMP_REPORTABLE_ENTITY",
+					"sinkTableName": "COMP_REPORTABLE_ENTITY",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"SCRE_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-07T10:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						10
+					]
+				}
+			}
+		}
+	}
+}

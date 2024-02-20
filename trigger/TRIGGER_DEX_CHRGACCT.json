@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_CHRGACCT",
+	"properties": {
+		"description": "Trigger to run delta load of DEX_CHRGACCT table at 5:15 pm daily.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_CHRGACCT_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-08T18:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						15
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

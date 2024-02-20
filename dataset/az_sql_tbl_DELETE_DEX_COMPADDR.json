@@ -1,0 +1,38 @@
+{
+	"name": "az_sql_tbl_DELETE_DEX_COMPADDR",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CTMT_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_CREATE_D",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DELETE_DEX_COMPADDR"
+		}
+	}
+}

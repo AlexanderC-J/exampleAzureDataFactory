@@ -1,0 +1,33 @@
+{
+	"name": "ALIGNE_BULK_TRIGGER",
+	"properties": {
+		"description": "Daily full copy of ALIGNE tables.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ALIGNE_BULK_COPY_WITH_SWITCH",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-02-02T16:29:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}

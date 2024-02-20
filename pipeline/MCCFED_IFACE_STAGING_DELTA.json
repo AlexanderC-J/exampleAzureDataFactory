@@ -1,0 +1,204 @@
+{
+	"name": "MCCFED_IFACE_STAGING_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delta_Load_from_1648_OESHA8FP",
+				"description": "Copies the delta data by filtering the data for last update time stamps more recent than the previous trigger and then upserting the delta data to SQL.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "\nSELECT SIQ_SEQ_NUM,\nSRCE_SYSTEM_CODE,\nSRCE_SYSTEM_KEY,\nSTATUS_IND,\nDBMS_LOB.substr(MESSAGE_XML, 4000) AS MESSAGE_XML, \nACTION_IND, ERROR_PROCESSING_COUNT_NUM, CREATED_BY_USERID, CREATED_TSTMP,\nLAST_UPDATE_USERID, LAST_UPDATE_TSTMP, TRANSACTION_TYPE\nFROM\n    stp_iface_staging WHERE LAST_UPDATE_TSTMP > (CURRENT_TIMESTAMP - 26/24 - 1/24)",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"SIQ_SEQ_NUM"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SIQ_SEQ_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SIQ_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "STATUS_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATUS_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTION_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ACTION_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERROR_PROCESSING_COUNT_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ERROR_PROCESSING_COUNT_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								}
+							},
+							{
+								"source": {
+									"name": "TRANSACTION_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRANSACTION_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "MESSAGE_XML",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MESSAGE_XML",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_IFACE_STAGING",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_STP_IFACE_STAGING",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

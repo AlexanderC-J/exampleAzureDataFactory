@@ -1,0 +1,19 @@
+{
+	"name": "ALIGNE_ZAINET_BOOK",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ALIGNE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ALIGNE/Retired"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ZAINET",
+			"table": "BOOK"
+		}
+	}
+}

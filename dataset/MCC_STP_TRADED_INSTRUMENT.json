@@ -1,0 +1,19 @@
+{
+	"name": "MCC_STP_TRADED_INSTRUMENT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MCC FED",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "CCMDBP",
+			"table": "STP_TRADED_INSTRUMENT"
+		}
+	}
+}

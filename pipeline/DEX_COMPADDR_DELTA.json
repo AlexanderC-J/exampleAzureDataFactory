@@ -1,0 +1,79 @@
+{
+	"name": "DEX_COMPADDR_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_TESH98BP_PRIM",
+				"description": "WONA Parcel\nAMSDC1-A-TESH98BP.EUROPE.SHELL.COM:1648/TESH98BP_PRIM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select COM.*, case when NVL(last_update_tstmp, '01-JAN-1980') > NVL(last_run_tstmp, '01-JAN-1980') then last_update_tstmp else last_run_tstmp end as GREATEST_UPDATE_TSTMP\r\nfrom MIRDBP.STO_COMPADDR COM \r\nwhere case when NVL(last_update_tstmp, '01-JAN-1980') > NVL(last_run_tstmp, '01-JAN-1980') then last_update_tstmp else last_run_tstmp end > (CURRENT_TIMESTAMP - 26/24 - 1/24)",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"COMPANY_MNEM",
+								"ADDRESS_TYPE_CODE",
+								"SEQ_NUM"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_COMPADDR",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DEX_COMPADDR",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!"
+		},
+		"annotations": []
+	}
+}

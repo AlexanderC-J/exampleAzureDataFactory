@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_DEX_COMPANY",
+	"properties": {
+		"description": "Trigger of DEX_COMPANY table to delta load at 5:10 pm",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyDEX5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STO_COMPANY",
+					"sinkTableName": "COMPANY",
+					"sourceDBName": "MIRDBP",
+					"Upsert_id": [
+						"COMPANY_MNEM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-08T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						10
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"name": "MCC_CASE_DOC_XREF_FULL_COPY",
+	"properties": {
+		"description": "Fortnightly truncate and then full copy of MCC.CASE_DOC_XREF table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_CASE_DOC_XREF",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 2,
+				"startTime": "2023-03-07T16:09:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						22
+					],
+					"weekDays": [
+						"Saturday"
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"name": "TRIGGER_MCCFED_STP_DOC_CONTRACT_XREF",
+	"properties": {
+		"description": "Daily trigger to delta load STP_DOC_CONTRACT_XREF table at 1 pm, 5 pm and 10 am.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_DOC_CONTRACT_XREF_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-13T18:21:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17,
+						10,
+						13
+					]
+				}
+			}
+		}
+	}
+}

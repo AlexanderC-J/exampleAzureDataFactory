@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_MCCFED_CCM_DOC_FOLDER_5PM",
+	"properties": {
+		"description": "Trigger to run delta load of CCM_DOC_FOLDER table at 5 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "DOC_FOLDER",
+					"sinkTableName": "CCM_DOC_FOLDER",
+					"sourceDBName": "ITDAKL5",
+					"Upsert_id": [
+						"SEQUENCE_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-08-23T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

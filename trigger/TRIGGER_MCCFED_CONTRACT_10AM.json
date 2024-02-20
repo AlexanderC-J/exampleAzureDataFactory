@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_MCCFED_CONTRACT_10AM",
+	"properties": {
+		"description": "Trigger to run delta load of Contract table at 10 am UK time every day.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED10AM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_CONTRACT",
+					"sinkTableName": "CONTRACT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"CON_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-08-27T10:00:00",
+				"timeZone": "GMT Standard Time"
+			}
+		}
+	}
+}

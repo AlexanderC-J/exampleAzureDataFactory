@@ -1,0 +1,24 @@
+{
+	"name": "HTTP_sharepoint_DTCC_1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DTCC_Sharepoint",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"BaseURL": "https://eu001-sp.shell.com/sites/UGDSGlobalContractsDigitalization/",
+				"RelativeURL": "/:x:/r/sites/UGDSGlobalContractsDigitalization/_layouts/15/Doc.aspx?sourcedoc=%7B738B5550-0544-407B-9B3E-E27DC04FDCC6%7D&file=CO_ESMA_Daily_Trade_State_Report_02502132-2023-01-10.19_21_29-en-2SH7.csv"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "az_sql_tbl_DEX_Parameterised",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sqlTableName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().sqlTableName",
+				"type": "Expression"
+			}
+		}
+	}
+}

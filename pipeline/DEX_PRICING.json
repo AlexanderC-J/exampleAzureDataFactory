@@ -1,0 +1,72 @@
+{
+	"name": "DEX_PRICING",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_TESH98BP_PRIM",
+				"description": "WONA Parcel\nAMSDC1-A-TESH98BP.EUROPE.SHELL.COM:1648/TESH98BP_PRIM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select\r\n\r\nSEQUENCE_NUM,\r\nCOMMENTS_TEXT,\r\nDOC_REQUEST_CODE,\r\nCURRENCY_CODE,\r\nUNITS_CODE,\r\nFIXED_PRICE,\r\nVLDT_LEVEL,\r\nPREMIUM_PRICE,\r\nPREMIUM_CURR_CODE,\r\nPREMIUM_UNIT_CODE,\r\nFXD_PRC_CLG_PRC,\r\nFXD_PRC_FLOOR_PRC,\r\nCEILING_VOLATY_NUM,\r\nFLOOR_VOLATY_NUM,\r\nFINAL_PRCL_PRICE,\r\nPRICE_USED_IND,\r\nCALC_STD_PRICE,\r\nCALC_CLG_PRICE,\r\nCALC_FLOOR_PRICE,\r\nORIDE_PRICE,\r\nTRIG_ACTION_TXT,\r\nLAST_UPDATE_TSTMP,\r\nDELETED_IND,\r\nLAST_RUN_TSTMP,\r\nSDW_VERSION_NUM,\r\nARCHIVED_IND,\r\nVALUATION_TERM_NUM,\r\nEXTENDED_PRCG_IND,\r\nICP_DATE,\r\nNON_USD_FIXED_PRC,\r\nNON_USD_FINAL_PRC,\r\nNON_USD_PRC_CCY_C,\r\nNON_USD_ORIDE_PRC,\r\nNON_USD_PREM_PRC,\r\nNON_USD_PREM_CCY_C,\r\nDM_OFFSET_NUM,\r\nDM_WKG_CALEND_IND,\r\nNON_USD_FXD_CLG_PR,\r\nNON_USD_FXD_FLR_PR,\r\nNON_USD_CAL_CLG_PR,\r\nNON_USD_CAL_FLR_PR,\r\nNON_USD_PRCG_UNT_C,\r\nSPREAD_OPTION_PRC,\r\nDY_EVENT_CODE,\r\nDY_OFFSET_NUM,\r\nDY_PRDD_TYPE_CODE,\r\nEXP_TERM_CHANGED_I,\r\n--EXP_TERM_CHGD_TS\r\n--EXTND_PRCG_CHGD_TS\r\nEXTD_PRCG_TYPE_CDE,\r\nCALC_DES_PRICE,\r\nMAX_OPER_TERM_NUM,\r\nDES_PRCG_IND,\r\nCALC_NLNG_PRICE,\r\nFL_NEG_PRC_AGRD_TY\r\n\r\nfrom MIRDBP.STO_PRICING ",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE DEX.PRICING",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_PRICING",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DEX_PRICING",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!"
+		},
+		"annotations": []
+	}
+}

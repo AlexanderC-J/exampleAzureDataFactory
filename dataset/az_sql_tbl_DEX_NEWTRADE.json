@@ -1,0 +1,106 @@
+{
+	"name": "az_sql_tbl_DEX_NEWTRADE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "TRADE_TSTMP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADE_TSTMP_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM_1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM_2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CTMT_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRCL_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRCG_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "PRCG_TERM_SEQ_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "TRIG_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXEC_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "TRADER_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ARCHIVED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_CREATE_D",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "NEWTRADE"
+		}
+	}
+}

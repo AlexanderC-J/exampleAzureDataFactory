@@ -1,0 +1,23 @@
+{
+	"name": "GLEIF_delta",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GLEIF_latest_files_CDF_csv_delta_LastWeek",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GLEIF"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			},
+			"compression": {
+				"type": "ZipDeflate",
+				"level": "Optimal"
+			}
+		}
+	}
+}

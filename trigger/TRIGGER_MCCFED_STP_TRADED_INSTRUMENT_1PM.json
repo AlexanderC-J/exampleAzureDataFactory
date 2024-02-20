@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_MCCFED_STP_TRADED_INSTRUMENT_1PM",
+	"properties": {
+		"description": "1 PM daily trigger to delta load the MCC_TRADED_INSTRUMENT table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED1PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_TRADED_INSTRUMENT",
+					"sinkTableName": "TRADED_INSTRUMENT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"STI_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-11-21T10:29:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						13
+					]
+				}
+			}
+		}
+	}
+}

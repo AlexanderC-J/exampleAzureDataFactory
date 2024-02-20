@@ -1,0 +1,18 @@
+{
+	"name": "SharePointOnlineList1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SharePointOnlineList",
+		"typeProperties": {
+			"siteUrl": "https://eu001-sp.shell.com/sites/UGDSGlobalContractsDigitalization/Shared%20Documents/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2FUGDSGlobalContractsDigitalization%2FShared%20Documents&viewpath=%2Fsites%2FUGDSGlobalContractsDigitalization%2FShared%20Documents%2FForms%2FAllItems%2Easpx&id=%2Fsites%2FUGDSGlobalContractsDigitalization%2FShared%20Documents%2FGeneral%2FSource%20Data%2FDTCC&viewid=8357b04d%2De82d%2D4848%2Db3c4%2Dbcc271672b6b",
+			"tenantId": "db1e96a8-a3da-442a-930b-235cac24cd5c",
+			"servicePrincipalId": "9896eec2-0019-4a07-9ce9-10c5e0f05ecf",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzZDhiYjAzZi1lZGVmLTRkNGMtODc2OC04NDhlOTI5YTYyYWQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "MUNICHSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

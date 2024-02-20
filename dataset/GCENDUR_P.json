@@ -1,0 +1,19 @@
+{
+	"name": "GCENDUR_P",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Endur",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ENDUR_CRUDE"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ODW_DW",
+			"table": "CRUDE_SOX_EXCLUDE_TRADE"
+		}
+	}
+}

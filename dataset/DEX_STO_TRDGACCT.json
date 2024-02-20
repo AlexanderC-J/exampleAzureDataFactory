@@ -1,0 +1,20 @@
+{
+	"name": "DEX_STO_TRDGACCT",
+	"properties": {
+		"description": "Native Tables\nMIRDBT.STO_TRDGACCT\nMain Trading Account Table in WONA DWH / DEX",
+		"linkedServiceName": {
+			"referenceName": "WONA DWH",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MIRDBP",
+			"table": "STO_TRDGACCT"
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "DEX_STO_CONDISPT",
+	"properties": {
+		"description": "Native Tables\nMIRDBT.STO_CONDISPT\nMain Contract Dispute Table in WONA DWH / DEX",
+		"linkedServiceName": {
+			"referenceName": "WONA DWH",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MIRDBP",
+			"table": "STO_CONDISPT"
+		}
+	}
+}

@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_CCM_DOC_FOLDER",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "DOC_FOLDER",
+					"sinkTableName": "DELETE_MCCFED_CCM_DOC_FOLDER",
+					"sourceDBName": "ITDAKL5",
+					"Upsert_id": "SEQUENCE_NUM",
+					"mccfedTableName": "MCC.CCM_DOC_FOLDER"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-11T10:30:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

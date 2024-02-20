@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_MCCFED_CCM_ECONFIRM_TRADE_DETAIL_1PM",
+	"properties": {
+		"description": "Trigger to run delta load of CCM_ECONFIRM_TRADE_DETAIL table at 1 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED1PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "CCM_ECONFIRM_TRADE_DETAIL",
+					"sinkTableName": "CCM_ECONFIRM_TRADE_DETAIL",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"ETD_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-11-21T10:08:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						13
+					]
+				}
+			}
+		}
+	}
+}

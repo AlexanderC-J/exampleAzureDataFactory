@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_DEX_GRADE",
+	"properties": {
+		"description": "Trigger to delta load the DEX_GRADE table at 5 pm daily UKT.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyDEX5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STO_GRADE",
+					"sinkTableName": "GRADE",
+					"sourceDBName": "MIRDBP",
+					"Upsert_id": [
+						"GRADE_CODE"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-13T19:26:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

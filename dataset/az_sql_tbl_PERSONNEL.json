@@ -1,0 +1,19 @@
+{
+	"name": "az_sql_tbl_PERSONNEL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "PERSONNEL"
+		}
+	}
+}

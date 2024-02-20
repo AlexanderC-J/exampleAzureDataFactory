@@ -1,0 +1,24 @@
+{
+	"name": "Endur",
+	"properties": {
+		"description": "Endur (for Crude, North America)\nProd environment\na link to ODW (Oil Data Warehouse, a copy of ENDUR_OIL app)",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=AMSDC1-U-S00032.europe.shell.com;port=1648;serviceName=OESH979P;user id=STO433SOXCRUDE",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultGCPipeline",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sc-ENDUR"
+			}
+		},
+		"connectVia": {
+			"referenceName": "MUNICHSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

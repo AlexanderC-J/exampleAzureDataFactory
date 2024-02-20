@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_CONSTOPR",
+	"properties": {
+		"description": "Trigger to delta load the DEX_CONSTOPR table at 5:50 pm daily.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_CONSTOPR_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T19:06:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						50
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

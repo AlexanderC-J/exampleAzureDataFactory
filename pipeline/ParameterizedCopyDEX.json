@@ -1,0 +1,81 @@
+{
+	"name": "ParameterizedCopyDEX",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": {
+							"value": "TRUNCATE TABLE @{pipeline().parameters.sinkTableName}",
+							"type": "Expression"
+						},
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@pipeline().parameters.sourceTableName",
+								"type": "Expression"
+							},
+							"databaseName": {
+								"value": "@pipeline().parameters.sourceDBName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"sqlTableName": {
+								"value": "@pipeline().parameters.sinkTableName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"sourceTableName": {
+				"type": "string"
+			},
+			"sinkTableName": {
+				"type": "string"
+			},
+			"sourceDBName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!/ParameterizedCopy"
+		},
+		"annotations": []
+	}
+}

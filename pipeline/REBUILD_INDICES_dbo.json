@@ -1,0 +1,124 @@
+{
+	"name": "REBUILD_INDICES_dbo",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Source Table List",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT TABLE_NAME\n        FROM    INFORMATION_SCHEMA.TABLES\n        WHERE       TABLE_TYPE = 'BASE TABLE'  AND TABLE_SCHEMA = 'dbo'\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AZURE_SQL_TABLE_LIST",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "For Each Table",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Source Table List",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Source Table List').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Script1",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "GCCONTRACT",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@{concat('ALTER INDEX ALL ON dbo.', item().Table_Name,' DISABLE')}",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script1_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "GCCONTRACT",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": {
+											"value": "@{concat('ALTER INDEX ALL ON dbo.', item().Table_Name,' REBUILD')}",
+											"type": "Expression"
+										}
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "STORAGE_OPTIMIZATION"
+		},
+		"annotations": []
+	}
+}

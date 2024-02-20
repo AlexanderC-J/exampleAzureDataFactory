@@ -1,0 +1,21 @@
+{
+	"name": "Binary3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_dls_GCPipeline",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GLEIF"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "gleif3.csv",
+				"fileSystem": "gleif"
+			}
+		}
+	}
+}

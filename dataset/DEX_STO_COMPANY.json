@@ -1,0 +1,20 @@
+{
+	"name": "DEX_STO_COMPANY",
+	"properties": {
+		"description": "Native Tables\nMIRDBT.STO_COMPANY\nMain Company Table in WONA DWH / DEX",
+		"linkedServiceName": {
+			"referenceName": "WONA DWH",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MIRDBP",
+			"table": "STO_COMPANY"
+		}
+	}
+}

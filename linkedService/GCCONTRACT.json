@@ -1,0 +1,24 @@
+{
+	"name": "GCCONTRACT",
+	"properties": {
+		"description": "NACONTRACT",
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=gcpipeline.database.windows.net;Initial Catalog=gcpipeline;User ID=adfpipeline",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultGCPipeline",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sc-GCCONTRACT"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

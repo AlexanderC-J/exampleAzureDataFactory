@@ -1,0 +1,101 @@
+{
+	"name": "ParameterizedDeltaCopyDEX5PM",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delta_Load_from_1648_OESHA8FP",
+				"description": "Copies the delta data by filtering the data for last update time stamps more recent than the previous trigger and then upserting the delta data to SQL.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "select PRC.*, case when NVL(last_update_tstmp, '01-JAN-1980') > NVL(last_run_tstmp, '01-JAN-1980') then last_update_tstmp else last_run_tstmp end as GREATEST_UPDATE_TSTMP\nfrom @{pipeline().parameters.sourceDBName}.@{pipeline().parameters.sourceTableName} PRC\nwhere case when NVL(last_update_tstmp, '01-JAN-1980') > NVL(last_run_tstmp, '01-JAN-1980') then last_update_tstmp else last_run_tstmp end > (CURRENT_TIMESTAMP - 26/24 - 1/24)",
+							"type": "Expression"
+						},
+						"partitionOption": "None",
+						"convertDecimalToInteger": false,
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": {
+								"value": "@pipeline().parameters.Upsert_id",
+								"type": "Expression"
+							}
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DEX_STO_Parameterised",
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@pipeline().parameters.sourceTableName",
+								"type": "Expression"
+							},
+							"databaseName": {
+								"value": "@pipeline().parameters.sourceDBName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DEX_Parameterised_2",
+						"type": "DatasetReference",
+						"parameters": {
+							"sqlTableName": {
+								"value": "@pipeline().parameters.sinkTableName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"sourceTableName": {
+				"type": "string"
+			},
+			"sinkTableName": {
+				"type": "string"
+			},
+			"sourceDBName": {
+				"type": "string"
+			},
+			"Upsert_id": {
+				"type": "array"
+			}
+		},
+		"folder": {
+			"name": "DEX!!!DO_NOT_RUN_WONADWH_PRE_1PM!!!/ParameterizedCopy"
+		},
+		"annotations": []
+	}
+}

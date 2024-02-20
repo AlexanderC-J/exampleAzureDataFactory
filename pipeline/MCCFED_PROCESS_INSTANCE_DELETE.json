@@ -1,0 +1,122 @@
+{
+	"name": "MCCFED_PROCESS_INSTANCE_DELETE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_TESH98BP_PRIM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "select SPI_SEQ_NUM from CCMDBP.STP_PROCESS_INSTANCE WHERE SRCE_SYSTEM_CODE IN ('ENDUR-LNG','ZAINET','DEX') AND created_tstmp > '01-JAN-2022'",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE DELETE_MCCFED_PROCESS_INSTANCE",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SPI_SEQ_NUM",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SPI_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_PROCESS_INSTANCE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_DELETE_MCC_STP_PROCESS_INSTANCE",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Select_Rows_to_Delete_Then_Delete",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Copy_from_TESH98BP_PRIM",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "GCCONTRACT",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "delete from MCC.PROCESS_INSTANCE where SPI_SEQ_NUM IN (select SPI_SEQ_NUM from MCC.PROCESS_INSTANCE where SPI_SEQ_NUM NOT IN (select SPI_SEQ_NUM from DELETE_MCCFED_PROCESS_INSTANCE))\n"
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

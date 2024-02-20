@@ -1,0 +1,19 @@
+{
+	"name": "ENDUR_LAW_TYPE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Endur_SEAm",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SEAm Netting"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ENDUR",
+			"table": "LAW_TYPE"
+		}
+	}
+}

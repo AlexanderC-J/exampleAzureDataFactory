@@ -1,0 +1,63 @@
+{
+	"name": "TRACK_MCCFED_CCM_DOC_CATEGORY",
+	"properties": {
+		"activities": [
+			{
+				"name": "Count Source",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "MCC FED",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "select count(*) from ITDAKL5.DOC_CATEGORY"
+						}
+					],
+					"scriptBlockExecutionTimeout": "06:00:00"
+				}
+			},
+			{
+				"name": "Count Sink",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select count(*) from CCM_DOC_CATEGORY\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "az_sql_tbl_CCM_DOC_CATEGORY",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Tracking"
+		},
+		"annotations": []
+	}
+}

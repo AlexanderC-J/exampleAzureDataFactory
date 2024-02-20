@@ -1,0 +1,17 @@
+{
+	"name": "Endur_SEAm",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "SEAm Connection for Netting",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=HOUCY1-A-TWSH735P.AMERICAS.SHELL.COM;port=1648;servicename=TWSH735P_PRIM;user id=CCHARLESBAGOTT_B",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2MTk5MTFhMC1iZmZkLTQ4NWMtOGY0Yi1iNWU5ODRhMzEyYWIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "MUNICHSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

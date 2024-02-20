@@ -1,0 +1,308 @@
+{
+	"name": "az_sql_tbl_DEX_PRICING",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SEQUENCE_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "COMMENTS_TEXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_REQUEST_CODE",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CURRENCY_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "UNITS_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FIXED_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "VLDT_LEVEL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PREMIUM_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "PREMIUM_CURR_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PREMIUM_UNIT_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FXD_PRC_CLG_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "FXD_PRC_FLOOR_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "CEILING_VOLATY_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "FLOOR_VOLATY_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "FINAL_PRCL_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "PRICE_USED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CALC_STD_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "CALC_CLG_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "CALC_FLOOR_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "ORIDE_PRICE",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "TRIG_ACTION_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DELETED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_RUN_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SDW_VERSION_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ARCHIVED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "VALUATION_TERM_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "EXTENDED_PRCG_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ICP_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "NON_USD_FIXED_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_FINAL_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_PRC_CCY_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_USD_ORIDE_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_PREM_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_PREM_CCY_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DM_OFFSET_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "DM_WKG_CALEND_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NON_USD_FXD_CLG_PR",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_FXD_FLR_PR",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_CAL_CLG_PR",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_CAL_FLR_PR",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "NON_USD_PRCG_UNT_C",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SPREAD_OPTION_PRC",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 0
+			},
+			{
+				"name": "DY_EVENT_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DY_OFFSET_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "DY_PRDD_TYPE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXP_TERM_CHANGED_I",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXP_TERM_CHGD_TS",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EXTND_PRCG_CHGD_TS",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EXTD_PRCG_TYPE_CDE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CALC_DES_PRICE",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 0
+			},
+			{
+				"name": "MAX_OPER_TERM_NUM",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 0
+			},
+			{
+				"name": "DES_PRCG_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CALC_NLNG_PRICE",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 0
+			},
+			{
+				"name": "FL_NEG_PRC_AGRD_TY",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "PRICING"
+		}
+	}
+}

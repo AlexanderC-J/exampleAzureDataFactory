@@ -1,0 +1,4329 @@
+{
+	"name": "ADLS_GLEIF_CSV_PARQUET_SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "GLEIF_ADLS CSV to Parquet",
+				"description": "ADF copy process to copy GLEIF CSV data from ADLSGen2 to parquet in another container of the same ADLSGen2.",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "GLEIF copy to ADLS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "LEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalName",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalName.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalName.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.1.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.1.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.1.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.1.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.2.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.2.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.2.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.2.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.3.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.3.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.3.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.3.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.4",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.4.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.4.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.4.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.4.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.5",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.5.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.5.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.5.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherEntityNames.OtherEntityName.5.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.1.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.1.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.1.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.1.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.2.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.2.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.2.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.2.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.3.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.3.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.3.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.3.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.4",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.4.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.4.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.4.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.4.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.5",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.5.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.5.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.5.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherEntityNames.TransliteratedOtherEntityName.5.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.HeadquartersAddress.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.HeadquartersAddress.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.1.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.2.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.3.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.4.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.OtherAddresses.OtherAddress.5.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.1.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.2.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.3.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.4.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.FirstAddressLine",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.FirstAddressLine",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AddressNumber",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AddressNumber",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AddressNumberWithinBuilding",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.MailRouting",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.MailRouting",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AdditionalAddressLine.1",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AdditionalAddressLine.2",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.AdditionalAddressLine.3",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.City",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.City",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.Region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.Region",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.Country",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.PostalCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.TransliteratedOtherAddresses.TransliteratedOtherAddress.5.PostalCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.RegistrationAuthority.RegistrationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.RegistrationAuthority.RegistrationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.RegistrationAuthority.OtherRegistrationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.RegistrationAuthority.OtherRegistrationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.RegistrationAuthority.RegistrationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.RegistrationAuthority.RegistrationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalJurisdiction",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalJurisdiction",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntityCategory",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.EntityCategory",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntitySubCategory",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.EntitySubCategory",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalForm.EntityLegalFormCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalForm.EntityLegalFormCode",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalForm.OtherLegalForm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalForm.OtherLegalForm",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.AssociatedEntity.type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.AssociatedEntity.type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.AssociatedEntity.AssociatedLEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.AssociatedEntity.AssociatedLEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.AssociatedEntity.AssociatedEntityName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.AssociatedEntity.AssociatedEntityName",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.AssociatedEntity.AssociatedEntityName.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.AssociatedEntity.AssociatedEntityName.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntityStatus",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.EntityStatus",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntityCreationDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.EntityCreationDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntityExpirationDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.EntityExpirationDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntityExpirationReason",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.EntityExpirationReason",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.1.SuccessorLEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.1.SuccessorLEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.1.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.1.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.1.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.1.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.2.SuccessorLEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.2.SuccessorLEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.2.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.2.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.2.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.2.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.3.SuccessorLEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.3.SuccessorLEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.3.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.3.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.3.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.3.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.4.SuccessorLEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.4.SuccessorLEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.4.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.4.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.4.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.4.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.5.SuccessorLEI",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.5.SuccessorLEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.5.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.5.SuccessorEntityName",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.SuccessorEntity.5.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.SuccessorEntity.5.SuccessorEntity.xmllang",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.group_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.group_type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.event_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.event_status",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.group_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.group_id",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.group_sequence_no",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.group_sequence_no",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.ValidationDocuments",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.ValidationDocuments",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.ValidationReference",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.ValidationReference",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.1.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.group_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.group_type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.event_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.event_status",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.group_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.group_id",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.group_sequence_no",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.group_sequence_no",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.ValidationDocuments",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.ValidationDocuments",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.ValidationReference",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.ValidationReference",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.2.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.group_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.group_type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.event_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.event_status",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.group_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.group_id",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.group_sequence_no",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.group_sequence_no",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.ValidationDocuments",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.ValidationDocuments",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.ValidationReference",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.ValidationReference",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.3.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.group_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.group_type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.event_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.event_status",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.group_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.group_id",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.group_sequence_no",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.group_sequence_no",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.ValidationDocuments",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.ValidationDocuments",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.ValidationReference",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.ValidationReference",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.4.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.group_type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.group_type",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.event_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.event_status",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.group_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.group_id",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.group_sequence_no",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.group_sequence_no",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.LegalEntityEventType",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.LegalEntityEventEffectiveDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.LegalEntityEventRecordedDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.ValidationDocuments",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.ValidationDocuments",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.ValidationReference",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.ValidationReference",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.1.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.1.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.2.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.2.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.3.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.3.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.4.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.4.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.5.AffectedField",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Entity.LegalEntityEvents.LegalEntityEvent.5.AffectedFields.5.field_xpath",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.InitialRegistrationDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.InitialRegistrationDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.LastUpdateDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.LastUpdateDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.RegistrationStatus",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.RegistrationStatus",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.NextRenewalDate",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.NextRenewalDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.ManagingLOU",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.ManagingLOU",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.ValidationSources",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.ValidationSources",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.ValidationAuthority.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.ValidationAuthority.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.ValidationAuthority.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.ValidationAuthority.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.ValidationAuthority.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.ValidationAuthority.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.1.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.1.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.1.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.1.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.1.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.1.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.2.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.2.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.2.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.2.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.2.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.2.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.3.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.3.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.3.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.3.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.3.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.3.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.4.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.4.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.4.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.4.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.4.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.4.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.5.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.5.ValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.5.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.5.OtherValidationAuthorityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.5.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Registration.OtherValidationAuthorities.OtherValidationAuthority.5.ValidationAuthorityEntityID",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "GLEIF_3",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Parquet2",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "GLEIF copy to ADLS",
+				"description": "ADF copy process to load open source data from GLEIF using HTTP connection to ADLSGen2.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings",
+							"compressionProperties": {
+								"type": "ZipDeflateReadSettings"
+							}
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "GLEIF_latest_CDF",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Binary3",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "GLEIF Parquet to SQL",
+				"description": "ADF copy process to copy GLEIF parquet data from blob storage to azure SQL table.",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "GLEIF_ADLS CSV to Parquet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ParquetSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "ParquetReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE [GLEIF].[LEI-CDFv3.1]",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "LEI",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "LEI",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalName",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "Entity.LegalName",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.LegalAddress.Country",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "Entity.LegalAddress.Country",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Entity.EntityStatus",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "Entity.EntityStatus",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.InitialRegistrationDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "Registration.InitialRegistrationDate",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.LastUpdateDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "Registration.LastUpdateDate",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.RegistrationStatus",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "Registration.RegistrationStatus",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Registration.ValidationSources",
+									"type": "String",
+									"physicalType": "UTF8"
+								},
+								"sink": {
+									"name": "Registration.ValidationSources",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Parquet2",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "GLEIF",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "GLEIF/Live"
+		},
+		"annotations": []
+	}
+}

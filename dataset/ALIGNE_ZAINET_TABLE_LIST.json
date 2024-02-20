@@ -1,0 +1,15 @@
+{
+	"name": "ALIGNE_ZAINET_TABLE_LIST",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ALIGNE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ALIGNE/Live"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": []
+	}
+}

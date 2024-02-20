@@ -1,0 +1,60 @@
+{
+	"name": "az_sql_tbl_CCM_ECONFIRM_ERROR_LOG",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CEE_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "SRCE_SYSTEM_KEY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERR_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERR_DESC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERR_EVENT_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERR_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ERR_STATUSDATE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_BY_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "CCM_ECONFIRM_ERROR_LOG"
+		}
+	}
+}

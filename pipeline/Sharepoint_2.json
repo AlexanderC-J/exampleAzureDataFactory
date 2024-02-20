@@ -1,0 +1,36 @@
+{
+	"name": "Sharepoint_2",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetBearerToken",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": true,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://accounts.accesscontrol.windows.net/db1e96a8-a3da-442a-930b-235cac24cd5c/tokens/OAuth/2",
+					"connectVia": {
+						"referenceName": "AutoResolveIntegrationRuntime",
+						"type": "IntegrationRuntimeReference"
+					},
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded"
+					},
+					"body": "grant_type=client_credentials&client_id=44bf5b7b-cccb-42e5-b1de-d890b0b0cd70@db1e96a8-a3da-442a-930b-235cac24cd5c&client_secret=bPUjMqCond7hMTr3QkO3AqC2E2U/1V81G/ZtovAW6Q0=&resource=00000003-0000-0ff1-ce00-000000000000/eu001-sp.shell.com@db1e96a8-a3da-442a-930b-235cac24cd5c"
+				}
+			}
+		],
+		"folder": {
+			"name": "DTCC"
+		},
+		"annotations": []
+	}
+}

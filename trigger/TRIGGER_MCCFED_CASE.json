@@ -1,0 +1,25 @@
+{
+	"name": "TRIGGER_MCCFED_CASE",
+	"properties": {
+		"description": "Trigger to delta load case table every 20 mins.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_CASE_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 20,
+				"startTime": "2022-08-25T11:00:00",
+				"timeZone": "GMT Standard Time"
+			}
+		}
+	}
+}

@@ -1,0 +1,80 @@
+{
+	"name": "az_sql_tbl_MCC_STP_DISPUTE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SD_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "SRCE_SYSTEM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_TYPE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISPUTE_ITEM_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TEMPLATE_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "LEGAL_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SOX_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OTHER_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DISPUTE_PARTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "DISPUTE"
+		}
+	}
+}

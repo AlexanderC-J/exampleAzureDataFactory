@@ -1,0 +1,38 @@
+{
+	"name": "TRIGGER_MCCFED_PARTY_5PM",
+	"properties": {
+		"description": "Trigger to run delta load of Party table at 5 pm UK time every day.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED5PM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STP_PARTY",
+					"sinkTableName": "PARTY",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": [
+						"PAR_SEQ_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-08-23T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

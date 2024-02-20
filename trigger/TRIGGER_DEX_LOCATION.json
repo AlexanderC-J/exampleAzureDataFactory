@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_LOCATION",
+	"properties": {
+		"description": "Trigger daily delta load of DEX_LOCATION table at 5:10 pm.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_LOCATION_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-02-17T15:44:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						10
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

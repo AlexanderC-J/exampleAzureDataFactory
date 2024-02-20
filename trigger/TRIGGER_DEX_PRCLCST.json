@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_PRCLCST",
+	"properties": {
+		"description": "Trigger to delta load DEX_PRCLCST table at 5:45 pm daily.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_PRCLCST_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T18:13:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						45
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

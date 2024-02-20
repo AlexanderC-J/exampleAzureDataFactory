@@ -1,0 +1,63 @@
+{
+	"name": "TRACK_MCCFED_CCM_IFACE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Count Sink",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select count(*) from CCM_IFACE",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "az_sql_tbl_CCM_IFACE",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Count Source",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select count(*) from ccm_iface\r\nwhere last_update_tstmp > '01-DEC-22' and transaction_type = 'M2M' and srce_system_code in ('DEX', 'ZAINET')",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "az_sql_tbl_CCM_IFACE",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Tracking"
+		},
+		"annotations": []
+	}
+}

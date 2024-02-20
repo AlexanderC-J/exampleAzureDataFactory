@@ -1,0 +1,379 @@
+{
+	"name": "CCM_IFACE_M2M_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select [CI_SEQ_NUM]\n,[SRCE_SYSTEM_CODE]\n,[SRCE_SYSTEM_KEY]\n,[CON_SEQ_NUM]\n,[STATUS_IND]\n,[ERROR_TXT]\n,[CREATED_BY_USERID]\n,[CREATED_TSTMP]\n,[LAST_UPDATE_USERID]\n,[LAST_UPDATE_TSTMP]\n,[PRIORITY_NUM]\n,[ACTION_IND]\n,[ERROR_PROCESSING_COUNT_NUM]\n,[XML_VERSION_NUM]\n,[TRADE_AMENDMENT_NUM]\n,[AMENDMENT_RECEIVED_TSTMP]\n,[TRANSACTION_TYPE]\n,[CALLING_PROCESS_NAME]\n,[PROCESSING_SYSTEM]\n,(TRY_CAST(REPLACE (TRY_CAST (TRADE_DETAILS_XML AS VARCHAR(MAX)), 'encoding=\"ISO-8859-1\"', '')\nAS XML).value('(/M2M/VALUE/node())[1] ', 'NVARCHAR(max)' )) as M2M_Value, (TRY_CAST(REPLACE (TRY_CAST (TRADE_DETAILS_XML AS VARCHAR(MAX)), 'encoding=\"ISO-8859-1\"', '')\nAS XML).value('(/M2M/VALUATION-TSTMP/node())[1] ', 'NVARCHAR(max)' )) as M2M_Date, (TRY_CAST(REPLACE (TRY_CAST (TRADE_DETAILS_XML AS VARCHAR(MAX)), 'encoding=\"ISO-8859-1\"', '')\nAS XML).value('(/M2M/UTI/node())[1] ', 'NVARCHAR(max)' )) as UTI  from MCC.CCM_IFACE where transaction_type = 'M2M' and srce_system_code in ('DEX','ZAINET') and LAST_UPDATE_TSTMP > '01-DEC-22' AND LAST_UPDATE_TSTMP > (CURRENT_TIMESTAMP - 26/24 - 1/24)",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"CI_SEQ_NUM"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CI_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								},
+								"sink": {
+									"name": "CI_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "SRCE_SYSTEM_KEY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CON_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								},
+								"sink": {
+									"name": "CON_SEQ_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 9
+								}
+							},
+							{
+								"source": {
+									"name": "STATUS_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "STATUS_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERROR_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ERROR_TXT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CREATED_BY_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								},
+								"sink": {
+									"name": "CREATED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_USERID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								},
+								"sink": {
+									"name": "LAST_UPDATE_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIORITY_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 2
+								},
+								"sink": {
+									"name": "PRIORITY_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 2
+								}
+							},
+							{
+								"source": {
+									"name": "ACTION_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "ACTION_IND",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ERROR_PROCESSING_COUNT_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 2
+								},
+								"sink": {
+									"name": "ERROR_PROCESSING_COUNT_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 2
+								}
+							},
+							{
+								"source": {
+									"name": "XML_VERSION_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 6
+								},
+								"sink": {
+									"name": "XML_VERSION_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 6
+								}
+							},
+							{
+								"source": {
+									"name": "TRADE_AMENDMENT_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 5
+								},
+								"sink": {
+									"name": "TRADE_AMENDMENT_NUM",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 5
+								}
+							},
+							{
+								"source": {
+									"name": "AMENDMENT_RECEIVED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								},
+								"sink": {
+									"name": "AMENDMENT_RECEIVED_TSTMP",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TRANSACTION_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "TRANSACTION_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CALLING_PROCESS_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "CALLING_PROCESS_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "PROCESSING_SYSTEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "PROCESSING_SYSTEM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "M2M_Value",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "M2M_Value",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "M2M_Date",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "M2M_Date",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "UTI",
+									"type": "String",
+									"physicalType": "nvarchar"
+								},
+								"sink": {
+									"name": "UTI",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "az_sql_tbl_CCM_IFACE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_CCM_IFACE_M2M",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

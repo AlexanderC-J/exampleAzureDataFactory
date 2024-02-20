@@ -1,0 +1,24 @@
+{
+	"name": "ALIGNE",
+	"properties": {
+		"description": "ALIGNE\nend0058-a5ld004.sga-res.com:1648/ALIGNE5_DEV2",
+		"annotations": [],
+		"type": "Oracle",
+		"typeProperties": {
+			"connectionString": "host=aennl00530or001.linux.shell.com;port=1648;serviceName=ALIGNE_DEV2;user id=DEV_GEN_RO",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVaultGCPipeline",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sc-ALIGNE"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

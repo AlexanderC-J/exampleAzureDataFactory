@@ -1,0 +1,104 @@
+{
+	"name": "az_sql_tbl_MCC_STP_TRADED_INSTRUMENT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "STI_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "SRCE_SYSTEM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SRCE_SYSTEM_KEY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SHORT_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LONG_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INST_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_BY_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PUBLICATION_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PUBLICATION_HEADER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CUR_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CRUDE_PROD_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEL_POINT_KEY_ID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEL_POINT_LONG_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEL_POINT_SHORT_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADED_INSTRUMENT_TYPE_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LEASE_SHORT_NAME_TXT",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "TRADED_INSTRUMENT"
+		}
+	}
+}

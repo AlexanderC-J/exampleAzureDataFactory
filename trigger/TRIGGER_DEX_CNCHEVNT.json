@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_CNCHEVNT",
+	"properties": {
+		"description": "Trigger to delta load the DEX_CNCHEVNT table at 5:45 pm daily.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_CNCHEVNT_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T18:31:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						45
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

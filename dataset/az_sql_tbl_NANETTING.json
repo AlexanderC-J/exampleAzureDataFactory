@@ -1,0 +1,19 @@
+{
+	"name": "az_sql_tbl_NANETTING",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZ_SQLDB_NANETTING",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "NAOIL NETTING"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "NANETTING"
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"name": "TRIGGER_MCCFED_CCM_ECONFIRM_ERROR_LOG",
+	"properties": {
+		"description": "Daily delta load at 10 am, 1 pm and 5 pm UKT.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CCM_ECONFIRM_ERROR_LOG_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-10-04T09:50:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						10,
+						17,
+						13
+					]
+				}
+			}
+		}
+	}
+}

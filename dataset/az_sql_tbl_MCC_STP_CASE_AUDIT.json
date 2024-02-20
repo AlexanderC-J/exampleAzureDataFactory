@@ -1,0 +1,116 @@
+{
+	"name": "az_sql_tbl_MCC_STP_CASE_AUDIT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CASE_AUDIT_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "SC_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "CURRENT_CASE_NUM",
+				"type": "decimal",
+				"precision": 15,
+				"scale": 0
+			},
+			{
+				"name": "WORKITEM_TAG",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PROCEDURE_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STEP_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STEP_DESC_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STEP_START_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "STEP_RELEASE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "AUTO_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "AUTO_SUCCESS_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "STEP_UNDO_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GUI_DISPLAY_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NOTE_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CREATED_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "MATCH_STATUS_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NEXT_ACTION_TXT",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "CASE_AUDIT"
+		}
+	}
+}

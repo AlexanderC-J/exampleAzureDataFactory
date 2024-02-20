@@ -1,0 +1,35 @@
+{
+	"name": "TRIGGER_CCM_IFACE",
+	"properties": {
+		"description": "Thrice daily full copy.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CCM_IFACE",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-02-17T17:17:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17,
+						13,
+						10
+					]
+				}
+			}
+		}
+	}
+}

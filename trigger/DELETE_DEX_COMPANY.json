@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_DEX_COMPANY",
+	"properties": {
+		"description": "Weekly trigger to delete rows from sql table no longer in oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteDEX",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "STO_COMPANY",
+					"sinkTableName": "DELETE_DEX_COMPANY",
+					"sourceDBName": "MIRDBP",
+					"Upsert_id": "COMPANY_MNEM",
+					"dexTableName": "DEX.COMPANY"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-10T13:32:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "az_sql_tbl_ALIGNE_PARTY",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZ_SQLDB_ALIGNPARTY",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "REGS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ALIGNPARTY"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "az_sql_tbl_CCM_ECONFIRM_DATA_SUBMIT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "CCM_ECONFIRM_DATA_SUBMIT"
+		}
+	}
+}

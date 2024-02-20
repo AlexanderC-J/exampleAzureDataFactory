@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_PRICING",
+	"properties": {
+		"description": "Daily delta load of DEX_PRICING table at 5:30 pm.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_PRICING_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-16T17:48:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						30
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

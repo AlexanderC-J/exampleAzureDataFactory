@@ -1,0 +1,78 @@
+{
+	"name": "az_sql_tbl_CCM_DOC_DEX_XREF",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DOC_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CTMT_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRDG_COMP_MNEM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRCL_SEQ_NUM",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "VOYAGE_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "SHARED_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PUBLISH_EXT_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FED_DOC_TYPE_SEQ_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "SHARED_XDECLARS_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONTRACT_CREATE_D",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "CCM_DOC_DEX_XREF"
+		}
+	}
+}

@@ -1,0 +1,52 @@
+{
+	"name": "GLEIF",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GLEIF"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LEI",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Entity.LegalName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Entity.LegalAddress.Country",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Entity.EntityStatus",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Registration.InitialRegistrationDate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Registration.LastUpdateDate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Registration.RegistrationStatus",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Registration.ValidationSources",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "GLEIF",
+			"table": "LEI-CDFv3.1"
+		}
+	}
+}

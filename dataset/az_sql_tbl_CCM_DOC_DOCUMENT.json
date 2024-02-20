@@ -1,0 +1,80 @@
+{
+	"name": "az_sql_tbl_CCM_DOC_DOCUMENT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED/CCM"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DOC_KEY",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ESIGN_IND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DOC_CONTENT",
+				"type": "binary"
+			},
+			{
+				"name": "DOC_FILE_NAME_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "FILE_EXT_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TEMPLATE_SEQ_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "FED_SRC_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_USERID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MAIL_SUBJECT_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MAIL_FROM_TXT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MAIL_RECEIVED_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "NOTIFICATION_IND",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "CCM_DOC_DOCUMENT"
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"name": "TRIGGER_MCCFED_STP_IFACE_STAGING_M2M",
+	"properties": {
+		"description": "Daily trigger at 10:30 am, 1:30 pm, and 5:30 pm.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_IFACE_STAGING_M2M_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-12-29T17:24:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						30
+					],
+					"hours": [
+						10,
+						13,
+						17
+					]
+				}
+			}
+		}
+	}
+}

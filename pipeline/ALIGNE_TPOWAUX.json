@@ -1,0 +1,930 @@
+{
+	"name": "ALIGNE_TPOWAUX",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE ALIGNE.TPOWAUX",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "TPOWAUX_TNUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_TNUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_BUYSELL_OVERRIDE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_BUYSELL_OVERRIDE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_CCER_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_CCER_TYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_DELIVERYINTENT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_DELIVERYINTENT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_EXCHANGE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_EXCHANGE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_GEN_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_GEN_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_VOLUME_CAP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_VOLUME_CAP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_VOLUME_OPT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_VOLUME_OPT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_PAPER_CONTRACT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_PAPER_CONTRACT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_SAP_MASTER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_SAP_MASTER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_CPTY_TRAD_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_CPTY_TRAD_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_INSTALLATIONS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_INSTALLATIONS",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_PRICEOPTIONALITY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_PRICEOPTIONALITY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_SAP_CHILD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_SAP_CHILD",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_MULTILEG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_MULTILEG",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_CPTY_GC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_CPTY_GC",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_REPORTABLE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_REPORTABLE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_SO_CPTY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_SO_CPTY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_ACTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_ACTION",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_INSTALLATION_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_INSTALLATION_ID",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_PROD_PRD_FRM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_PROD_PRD_FRM",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_PROD_PRD_TO",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_PROD_PRD_TO",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_ISSUE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_ISSUE_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_EXPIRY_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_EXPIRY_DATE",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_FROM_REGISTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_FROM_REGISTRY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_TO_REGISTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_TO_REGISTRY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_AUDITDT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_AUDITDT",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_AUDITED",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_AUDITED",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_CERTDELIVERYPRD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_CERTDELIVERYPRD",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_CERTNUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_CERTNUMBER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_CERTSCHEME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_CERTSCHEME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_DESTREGISTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_DESTREGISTRY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_EXPIRYDATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_EXPIRYDATE",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_FEEDSTOCK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_FEEDSTOCK",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_GHGVALUE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_GHGVALUE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_GASBUNDLE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_GASBUNDLE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_GASDELIVERYPRD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_GASDELIVERYPRD",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_INJECTIONDATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_INJECTIONDATE",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_ISSUANCEPL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_ISSUANCEPL",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_MASSBALTIME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_MASSBALTIME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_ORIGINCTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_ORIGINCTRY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_ORIGINREGISTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_ORIGINREGISTRY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_RECPTNUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_RECPTNUM",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_REVOCATIONDT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_REVOCATIONDT",
+									"type": "DateTime",
+									"physicalType": "datetime2"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_SCHEME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_SCHEME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_SUBSIDISED",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_SUBSIDISED",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_TRANSFERTYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_TRANSFERTYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_TRANSPORTCAP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_TRANSPORTCAP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_VALIDATIONST",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_VALIDATIONST",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_GENPUR1_OVER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_GENPUR1_OVER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_GENPUR2_OVER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_GENPUR2_OVER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_GENPUR3_OVER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_GENPUR3_OVER",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_NOVATION_DATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_NOVATION_DATE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_OLDCPTY_NAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_OLDCPTY_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_OLDUSI",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_OLDUSI",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_CAICODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_CAICODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_CPBALGRP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_CPBALGRP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_LEBALGRP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_LEBALGRP",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_AMEND_REASON",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_AMEND_REASON",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_EXPLANATION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_EXPLANATION",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_IGT_BOOK_REF",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_IGT_BOOK_REF",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_OVERRIDETYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_OVERRIDETYPE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_OVERRIDEINPUT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_OVERRIDEINPUT",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_OVERRIDEFREE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_OVERRIDEFREE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_MATCHCODESUFFIX",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_MATCHCODESUFFIX",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_NOMS_PROCESSED",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_NOMS_PROCESSED",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_COUNTRY_OF_ORIGIN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_COUNTRY_OF_ORIGIN",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_SOURCE_OF_ENERGY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_SOURCE_OF_ENERGY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_SUBSIDISED_",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_SUBSIDISED_",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_EXPORTABLE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_EXPORTABLE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_EUGOOSFORUK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_EUGOOSFORUK",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_OUTAGES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_OUTAGES",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_PROJECT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_PROJECT_CODE",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_COMPATTR2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_COMPATTR2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_ASSET_LINKED",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_ASSET_LINKED",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TPOWAUX_A_ASSET_NAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TPOWAUX_A_ASSET_NAME",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ALIGNE_ZAINET_TPOWAUX",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_TPOWAUX",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "ALIGNE/Retired"
+		},
+		"annotations": []
+	}
+}

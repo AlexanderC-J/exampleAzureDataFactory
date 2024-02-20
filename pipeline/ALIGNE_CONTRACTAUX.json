@@ -1,0 +1,129 @@
+{
+	"name": "ALIGNE_CONTRACTAUX",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE ALIGNE.CONTRACTAUX",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CONTRACTAUX_REFRESH",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CONTRACTAUX_REFRESH",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 0,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACTAUX_A_GBO_EXCEPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACTAUX_A_GBO_EXCEPTION",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACTAUX_A_TAX_EXCEPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACTAUX_A_TAX_EXCEPTION",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACTAUX_A_CSA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACTAUX_A_CSA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACTAUX_A_MA_CATEGORY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACTAUX_A_MA_CATEGORY",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACTAUX_A_MNA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACTAUX_A_MNA",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ALIGNE_ZAINET_CONTRACTAUX",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_ALIGNE_CONTRACTAUX",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "ALIGNE/Retired"
+		},
+		"annotations": []
+	}
+}

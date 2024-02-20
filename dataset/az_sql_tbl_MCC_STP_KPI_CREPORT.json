@@ -1,0 +1,304 @@
+{
+	"name": "az_sql_tbl_MCC_STP_KPI_CREPORT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MCC FED"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "MAIN_CASE_NUM",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "CC_REVIEW_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "CC_REVIEW_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CC_REVIEW_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CC_REVIEW_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LAST_UPDATE_TSTMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SOURCE_SYSTEM_CODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "REQUEST_TYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COUNTERPARTY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "QUEUE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NEW_OR_AMEND",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRADEDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WORKFLOW",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUY_OR_SELL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INTERNALENTITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMMODITY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WORKFLOW_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BROKER_CONFIRM_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "EMATCH_BROKER_STATUS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EMATCH_CP_STATUS",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BROKER_CONF_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BROKER_CONF_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BROKER_CONFIRM_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GENERATE_CONTRACT_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "GEN_CONTRACT_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "GEN_CONTRACT_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "GENERATE_CONTRACT_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GENSEND_RESPONSE_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "RESPONSE_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RESPONSE_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RESPONSE_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TRDDATE_TO_CPCONTRCVD_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "TRADE_TO_CCR_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TRADE_TO_CCR_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CPCONTRCVD_TO_WTCPCONTREL_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "CCR_TO_WCCR_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CCR_TO_WCCR_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WTCPCONTREL_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CA_REVIEW_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "CA_REVIEW_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CA_REVIEW_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CA_REVIEWED_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CC_SENT_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "CC_SENT_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CC_SENT_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CC_SENT_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WKFLOW_TO_DSP_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "WKFLOW_TO_DSP_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "E2E_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "TR_REVIEW_DAYS",
+				"type": "decimal",
+				"precision": 20,
+				"scale": 0
+			},
+			{
+				"name": "TR_REVIEWED_USER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TR_REVIEW_START_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TR_REVIEW_END_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "MCC",
+			"table": "KPI_CREPORT"
+		}
+	}
+}

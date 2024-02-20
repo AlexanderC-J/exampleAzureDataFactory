@@ -1,0 +1,26 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DTCC",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DTCC"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "CO_ESMA_Daily_Trade_State_Report_02502132-2020-08-28.06_48_53-en.csv",
+				"container": "sharepoint-dtcc"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"name": "MCC_WORKFLOW_FULL_COPY",
+	"properties": {
+		"description": "Fortnightly truncate and then full copy of MCC.WORKFLOW table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_WORKFLOW",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 2,
+				"startTime": "2023-03-07T16:56:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						21
+					],
+					"weekDays": [
+						"Saturday"
+					]
+				}
+			}
+		}
+	}
+}

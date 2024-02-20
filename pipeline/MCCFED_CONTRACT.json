@@ -1,0 +1,86 @@
+{
+	"name": "MCCFED_CONTRACT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_from_1648_OESHA8FP",
+				"description": "EXCLUDES\nAMSDC1-U-S00032.europe.shell.com:1648/OESH979P",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MIRDBT.STO_CDTYCTMT"
+					},
+					{
+						"name": "Destination",
+						"value": "CDTYCTMT//CDTYCTMTList.csv"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "OracleSource",
+						"oracleReaderQuery": "SELECT\n    stp_contract.con_seq_num                      AS con_seq_num,\n    stp_contract.srce_system_code                 AS srce_system_code,\n    stp_contract.srce_system_key                  AS srce_system_key,\n    stp_contract.buy_sell_code                    AS buy_sell_code,\n    stp_contract.internal_lentity_seq_num         AS internal_lentity_seq_num,\n    stp_contract.settle_date                      AS settle_date,\n    stp_contract.external_lentity_seq_num         AS external_lentity_seq_num,\n    stp_contract.struck_date                      AS struck_date,\n    stp_contract.broker_seq_num                   AS broker_seq_num,\n    stp_contract.pymt_cur_seq_num                 AS pymt_cur_seq_num,\n    stp_contract.trader_seq_num                   AS trader_seq_num,\n    stp_contract.ves_seq_num                      AS ves_seq_num,\n    stp_contract.contract_type_code               AS contract_type_code,\n    stp_contract.contract_subtype_code            AS contract_subtype_code,\n    stp_contract.contract_group_txt               AS contract_group_txt,\n    stp_contract.total_qty_amt                    AS total_qty_amt,\n    stp_contract.total_qty_unit                   AS total_qty_unit,\n    stp_contract.total_premium                    AS total_premium,\n    stp_contract.total_premium_cur_seq_num        AS total_premium_cur_seq_num,\n    stp_contract.premium_date                     AS premium_date,\n    stp_contract.position                         AS position,\n    stp_contract.start_date                       AS start_date,\n    stp_contract.end_date                         AS end_date,\n    stp_contract.option_type                      AS option_type,\n    stp_contract.broker_fee_amt                   AS broker_fee_amt,\n    stp_contract.broker_fee_cur_seq_num           AS broker_fee_cur_seq_num,\n    stp_contract.internal_comment_txt             AS internal_comment_txt,\n    stp_contract.created_tstmp                    AS created_tstmp,\n    stp_contract.last_update_tstmp                AS last_update_tstmp,\n    stp_contract.other_trader_seq_num             AS other_trader_seq_num,\n    stp_contract.status_ind                       AS status_ind,\n    stp_contract.law_type_code                    AS law_type_code,\n    stp_contract.law_governing_txt                AS law_governing_txt,\n    stp_contract.deal_term_txt                    AS deal_term_txt,\n    stp_contract.contract_writer_t                AS contract_writer_t,\n    stp_contract.custom_txt                       AS custom_txt,\n    stp_contract.canc_initprd_durn_num            AS canc_initprd_durn_num,\n    stp_contract.canc_initprd_unt_seq_num         AS canc_initprd_unt_seq_num,\n    stp_contract.canc_rollprd_durn_num            AS canc_rollprd_durn_num,\n    stp_contract.canc_rollprd_unt_seq_num         AS canc_rollprd_unt_seq_num,\n    stp_contract.canc_initprd_expiration_date     AS canc_initprd_expiration_date,\n    stp_contract.canc_initprd_effective_date      AS canc_initprd_effective_date,\n    stp_contract.canc_notiprd_durn_num            AS canc_notiprd_durn_num,\n    stp_contract.canc_notiprd_unt_seq_num         AS canc_notiprd_unt_seq_num,\n    stp_contract.hms_key_txt                      AS hms_key_txt,\n    stp_contract.contract_revision_txt            AS contract_revision_txt,\n    stp_contract.clearing_center_txt              AS clearing_center_txt,\n    stp_contract.clr_cparty_lentity_seq_num       AS clr_cparty_lentity_seq_num,\n    stp_contract.premium_per_unit_val             AS premium_per_unit_val,\n    stp_contract.average_price                    AS average_price,\n    stp_contract.average_volume                   AS average_volume,\n    stp_contract.book_txt                         AS book_txt,\n    stp_contract.broker_status_code               AS broker_status_code,\n    stp_contract.confirm_type_code                AS confirm_type_code,\n    stp_contract.counterparty_status_code         AS counterparty_status_code,\n    stp_contract.cpty_commission_curr_seq_num     AS cpty_commission_curr_seq_num,\n    stp_contract.cpty_commission_num              AS cpty_commission_num,\n    stp_contract.dispute_ind                      AS dispute_ind,\n    stp_contract.electronic_match_txt             AS electronic_match_txt,\n    stp_contract.envtl_allow_seq_num              AS envtl_allow_seq_num,\n    stp_contract.master_agree_seq_num             AS master_agree_seq_num,\n    stp_contract.notification_code                AS notification_code,\n    stp_contract.option_expiration_date           AS option_expiration_date,\n    stp_contract.premium_period_txt               AS premium_period_txt,\n    stp_contract.premium_rate                     AS premium_rate,\n    stp_contract.premium_rate_unit_seq_num        AS premium_rate_unit_seq_num,\n    stp_contract.prod_cons_txt                    AS prod_cons_txt,\n    stp_contract.shell_document_ind               AS shell_document_ind,\n    stp_contract.special_conditions_txt           AS special_conditions_txt,\n    stp_contract.total_value                      AS total_value,\n    stp_contract.trade_stamps_txt                 AS trade_stamps_txt,\n    stp_contract.tran_num_id                      AS tran_num_id,\n    stp_contract.queue_seq_num                    AS queue_seq_num,\n    stp_contract.imb_threshold_qty_amt            AS imb_threshold_qty_amt,\n    stp_contract.imb_thrsh_qty_unit_seq_num       AS imb_thrsh_qty_unit_seq_num,\n    stp_contract.legacy_srce_system_key           AS legacy_srce_system_key,\n    stp_contract.legacy_srce_system_code          AS legacy_srce_system_code,\n    stp_contract.full_history_ind                 AS full_history_ind,\n    stp_contract.ins_num                          AS ins_num,\n    stp_contract.cparty_status_update_userid      AS cparty_status_update_userid,\n    stp_contract.cparty_status_update_tstmp       AS cparty_status_update_tstmp,\n    stp_contract.broker_status_update_userid      AS broker_status_update_userid,\n    stp_contract.broker_status_update_tstmp       AS broker_status_update_tstmp,\n    stp_contract.cpty_ref_txt                     AS cpty_ref_txt,\n    stp_contract.broker_ref_txt                   AS broker_ref_txt,\n    stp_contract.evergreen_cancel_date            AS evergreen_cancel_date,\n    stp_contract.other_trader_txt                 AS other_trader_txt,\n    stp_contract.governing_term_txt               AS governing_term_txt,\n    stp_contract.additional_term1_start_date      AS additional_term1_start_date,\n    stp_contract.additional_term1_end_date        AS additional_term1_end_date,\n    stp_contract.additional_term2_start_date      AS additional_term2_start_date,\n    stp_contract.additional_term2_end_date        AS additional_term2_end_date,\n    stp_contract.int_trading_strategy_txt         AS int_trading_strategy_txt,\n    stp_contract.cp_trading_strategy_txt          AS cp_trading_strategy_txt,\n    stp_contract.broker_rate_ra                   AS broker_rate_ra,\n    stp_contract.pricing_model_txt                AS pricing_model_txt,\n    stp_contract.admin_comment_seq_num            AS admin_comment_seq_num,\n    stp_contract.internal_trade_ind               AS internal_trade_ind,\n    stp_contract.uti_txt                          AS uti_txt,\n    stp_contract.novation_ind                     AS novation_ind,\n    stp_contract.execution_timestamp              AS execution_timestamp,\n    stp_contract.interconnect_point_txt           AS interconnect_point_txt,\n    stp_contract.hedge_ind                        AS hedge_ind,\n    stp_contract.collateral_portfolio_code_txt    AS collateral_portfolio_code_txt,\n    stp_contract.emir_reportable_ind              AS emir_reportable_ind,\n    stp_contract.efet_transaction_type            AS efet_transaction_type,\n    stp_contract.trade_confirmation_status        AS trade_confirmation_status,\n    stp_contract.trade_confirmation_tstmp         AS trade_confirmation_tstmp,\n    stp_contract.mtf_classification_txt           AS mtf_classification_txt,\n    stp_contract.orig_contract_subtype_code       AS orig_contract_subtype_code,\n    stp_contract.dispute_resolution_txt           AS dispute_resolution_txt,\n    stp_contract.service_level_agree_ind          AS service_level_agree_ind,\n    stp_contract.liability_indemnity_ind          AS liability_indemnity_ind,\n    stp_contract.purchase_side_note_ind           AS purchase_side_note_ind,\n    stp_contract.book_type_code                   AS book_type_code,\n    stp_contract.deal_entry_tstmp                 AS deal_entry_tstmp,\n    stp_contract.deal_modification_tstmp          AS deal_modification_tstmp,\n    stp_contract.remit_reporting_code             AS remit_reporting_code,\n    stp_contract.cancel_date_tstmp                AS cancel_date_tstmp,\n    stp_contract.uti_generator_txt                AS uti_generator_txt,\n    stp_contract.cpty_uti_pending_ind             AS cpty_uti_pending_ind,\n    stp_contract.contract_agreement_date          AS contract_agreement_date,\n    stp_contract.trade_entered_by_seq_num         AS trade_entered_by_seq_num,\n    stp_contract.imbalance_settlement_txt         AS imbalance_settlement_txt,\n    stp_contract.imbalance_settlement             AS imbalance_settlement,\n    stp_contract.statement_of_record_txt          AS statement_of_record_txt,\n    stp_contract.pre_delivery_ind                 AS pre_delivery_ind,\n    stp_contract.pre_delivery_terms_txt           AS pre_delivery_terms_txt,\n    stp_contract.facility_name_txt                AS facility_name_txt,\n    stp_contract.pipeline_name_txt                AS pipeline_name_txt,\n    stp_contract.econfirm_product_id              AS econfirm_product_id,\n    stp_contract.federal_lease_ind                AS federal_lease_ind,\n    stp_contract.df_reportable_ind                AS df_reportable_ind,\n    stp_contract.regulatorily_continuing_ind      AS regulatorily_continuing_ind,\n    stp_contract.remit_reportable_ind             AS remit_reportable_ind,\n    stp_contract.deal_days                        AS deal_days,\n    stp_contract.trade_fee_desc                   AS trade_fee_desc,\n    stp_contract.trade_fee_amount                 AS trade_fee_amount\nFROM\n    stp_contract WHERE SRCE_SYSTEM_CODE IN ('ENDUR','ENDUR-P','IO','ENDUR-LNG','ZAINET','DEX')",
+						"partitionOption": "None",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE MCC.CONTRACT",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"validateDataConsistency": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AZ_Link_ADFPIPELINE2020_storage",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MCC_STP_CONTRACT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "az_sql_tbl_MCC_CONTRACT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "MCC FED/Live"
+		},
+		"annotations": []
+	}
+}

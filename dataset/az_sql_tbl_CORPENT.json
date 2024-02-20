@@ -1,0 +1,19 @@
+{
+	"name": "az_sql_tbl_CORPENT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCCONTRACT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DEX"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "DEX",
+			"table": "CORPENT"
+		}
+	}
+}

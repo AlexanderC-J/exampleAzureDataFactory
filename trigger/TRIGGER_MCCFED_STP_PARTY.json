@@ -1,0 +1,31 @@
+{
+	"name": "TRIGGER_MCCFED_STP_PARTY",
+	"properties": {
+		"description": "Trigger to load delta data from Oracle to SQL DB twice daily at 10 am and 5 pm for STP_PARTY table.",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "MCCFED_PARTY_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-07-29T17:00:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"hours": [
+						10,
+						17
+					]
+				}
+			}
+		}
+	}
+}

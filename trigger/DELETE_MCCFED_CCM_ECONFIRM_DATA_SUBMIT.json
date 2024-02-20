@@ -1,0 +1,43 @@
+{
+	"name": "DELETE_MCCFED_CCM_ECONFIRM_DATA_SUBMIT",
+	"properties": {
+		"description": "Weekly trigger to delete rows from SQL table no longer in Oracle table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeleteMCCFED",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "CCM_ECONFIRM_DATA_SUBMIT",
+					"sinkTableName": "DELETE_MCCFED_CCM_ECONFIRM_DATA_SUBMIT",
+					"sourceDBName": "CCMDBP",
+					"Upsert_id": "CEB_SEQ_NUM",
+					"mccfedTableName": "MCC.CCM_ECONFIRM_DATA_SUBMIT"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-10-11T11:15:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						17
+					],
+					"weekDays": [
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

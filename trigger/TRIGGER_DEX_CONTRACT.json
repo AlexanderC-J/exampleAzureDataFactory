@@ -1,0 +1,33 @@
+{
+	"name": "TRIGGER_DEX_CONTRACT",
+	"properties": {
+		"description": "Trigger to run delta load daily of DEX_CONTRACT table at 5:25 pm.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "DEX_CONTRACT_DELTA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-09T15:04:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						25
+					],
+					"hours": [
+						17
+					]
+				}
+			}
+		}
+	}
+}

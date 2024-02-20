@@ -1,0 +1,41 @@
+{
+	"name": "TRIGGER_MCCFED_CCM_DOC_XREF_10AM",
+	"properties": {
+		"description": "10 AM daily delta load of CCM_DOX_XREF table.",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ParameterizedDeltaCopyMCCFED10AM",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceTableName": "DOC_XREF",
+					"sinkTableName": "CCM_DOC_XREF",
+					"sourceDBName": "ITDAKL5",
+					"Upsert_id": [
+						"SEQUENCE_NUM"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-13T13:32:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						10
+					]
+				}
+			}
+		}
+	}
+}

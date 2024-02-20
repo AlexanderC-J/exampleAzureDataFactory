@@ -1,1 +1,1 @@
-Initialized by Azure Data Factory!
+This repository shows example code for a legacy azure data factory environment that I used to work on. It should be used as a reference in case you want to perform any of the functionalities it includes such as delta loading and connecting to APIs for ETL.
